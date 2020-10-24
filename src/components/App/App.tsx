@@ -1,8 +1,9 @@
-import React from 'react';
-import './App.scss';
-import { routes } from '../../routes/index';
+import React from 'react'
+import './App.scss'
+import { routes } from '../../routes/index'
 import { Route, Switch } from 'react-router-dom'
-// import Header from '../../components/Header/Header'
+
+import Header from '../../components/Header/Header'
 
 const App: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const App: React.FC = () => {
         ))
         }
       </Switch>
-  );
+  )
 }
 
-export default App;
+export default App
