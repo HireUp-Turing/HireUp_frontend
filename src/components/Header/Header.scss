@@ -5,6 +5,8 @@
 	display: flex;
 	justify-content: space-between;
 	border-bottom: solid 1px $soft-accent;
+	position: fixed;
+	width: 100%;
 
 	h1 {
 		font-family: 'Krona One', sans-serif;
