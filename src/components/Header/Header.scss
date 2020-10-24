@@ -7,6 +7,7 @@
 	border-bottom: solid 1px $soft-accent;
 
 	h1 {
+		font-family: 'Krona One', sans-serif;
 		color: $accent;
 	}
 	
@@ -14,9 +15,12 @@
 		display: flex;
 		justify-content: space-between;
 		a {
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: 500;
 			margin: 0 2em;
 			min-height: 100%;
-			line-height: 5em;
+			line-height: 5.5em;
+			font-size: 1em;
 		}
 		a, .inactive {
 			color: $text;
@@ -25,6 +29,7 @@
 		.active {
 			color: $accent;
 			border-bottom: .1em solid $accent;
+			font-style: italic;
 		}
 	}
 }
