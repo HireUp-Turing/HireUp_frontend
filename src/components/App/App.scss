@@ -1,3 +1,7 @@
+@import '../../_variables.scss';
+
 .App {
-  text-align: center;
+	text-align: center;
+	background-color: $main-bg;
+	height: 100vh;
 }

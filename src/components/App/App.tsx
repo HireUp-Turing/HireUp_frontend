@@ -7,12 +7,15 @@ import Header from '../../components/Header/Header'
 
 const App: React.FC = () => {
   return (
+		<main className="App">
+			<Header />
       <Switch>
         {Object.values(routes).map((route:any, index:number) => (
           <Route key={index} {...route} path={route.path} />
         ))
         }
       </Switch>
+		</main>
   )
 }
 
