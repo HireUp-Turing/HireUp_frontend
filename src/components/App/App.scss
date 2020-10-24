@@ -6,7 +6,13 @@
 	height: 100vh;
 }
 
-p {
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 300;
+	margin: 0 10em 0 10em;
+	height: 100%;
 }
