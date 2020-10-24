@@ -1,0 +1,30 @@
+@import '../../_variables.scss';
+
+.Header {
+	background-color: $main-bg;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: solid 1px $soft-accent;
+
+	h1 {
+		color: $accent;
+	}
+	
+	nav {
+		display: flex;
+		justify-content: space-between;
+		a {
+			margin: 0 2em;
+			min-height: 100%;
+			line-height: 5em;
+		}
+		a, .inactive {
+			color: $text;
+			text-decoration: none;
+		}
+		.active {
+			color: $accent;
+			border-bottom: .1em solid $accent;
+		}
+	}
+}
