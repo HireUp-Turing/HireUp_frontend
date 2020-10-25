@@ -12,8 +12,7 @@ const App: React.FC = () => {
       <Switch>
         {Object.values(routes).map((route:any, index:number) => (
           <Route key={index} {...route} path={route.path} />
-        ))
-        }
+        ))}
       </Switch>
 		</div>
   )
