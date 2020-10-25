@@ -10,16 +10,19 @@ const Header: React.FC = () => {
 		<header className="Header">
 			<Menu
 				customBurgerIcon={<img src="../search.svg" alt="search icon" />}
-				customCrossIcon={<img src="../close.svg" alt="close icon" />}>
+				customCrossIcon={<img src="../close.svg" alt="close icon" />}
+				width={ 420 }
+			>
 				<Search />
 			</Menu>
 			<h1>HIRE UP</h1>
-			<nav>
+			<nav className="header-nav">
 				<NavLink exact to="/">MY PROFILE</NavLink>
 				<NavLink exact to="/applicant" activeClassName="active">TEST</NavLink>
 			</nav>
 		</header>
 	)
 }
+
 
 export default Header
