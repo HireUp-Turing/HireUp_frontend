@@ -1,0 +1,23 @@
+@import '../../_variables.scss';
+
+.options {
+  border: .13em solid $soft-accent;
+  margin: 3em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: 25em;
+  width: 23em;
+  padding: 1em;
+}
+
+.option {
+  margin: .2em 1em;
+}
+
+.cta-button { 
+  @include cta-button;
+  color: $main-bg;
+}

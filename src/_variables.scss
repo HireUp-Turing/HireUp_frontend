@@ -1,10 +1,27 @@
-// fonts
+//fonts
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Ubuntu:ital,wght@0,300;0,500;1,500&display=swap');
 
-// colors
+//colors
 $main-bg: #F6F8F2;
 $text: #333533;
 $accent: #E85D75;
-// $soft-accent: #cfdbd5;
 $soft-accent: #cdcdcd;
 $green: #037971;
+
+//mixins
+@mixin cta-button() {
+	text-decoration: none;
+	font-weight: 500;
+	background: $accent;
+	color: $main-bg;
+	padding: .5em;
+	margin: .5em;
+	border-radius: .8em;
+	
+	&:hover {
+		font-style: italic;
+	}
+}
+
+
+
