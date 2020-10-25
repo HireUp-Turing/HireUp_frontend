@@ -11,7 +11,7 @@ const Header: React.FC = () => {
 			<Menu
 				customBurgerIcon={<img src="../search.svg" alt="search icon" />}
 				customCrossIcon={<img src="../close.svg" alt="close icon" />}
-				width={ 420 }
+				width="min-content"
 			>
 				<Search />
 			</Menu>

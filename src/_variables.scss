@@ -11,7 +11,8 @@ $green: #037971;
 //mixins
 @mixin cta-button() {
 	text-decoration: none;
-	font-weight: 500;
+	font-family: 'Krona One', sans-serif;
+	font-size: 1.1em;
 	background: $accent;
 	color: $main-bg;
 	padding: .5em;

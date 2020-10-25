@@ -1,15 +1,28 @@
+@import './variables';
+
 * {
 	box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0; 
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
 }
+
+h1, h2 {
+  font-family: 'Krona One', sans-serif;
+  color: $accent;
+}
+
+h1 {
+  position: absolute;
+  bottom: -6px;
+  width: 100%;
+  font-size: 2.5em;
+  z-index: -1;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -6,22 +6,29 @@ import './Search.scss'
 
 const Search: React.FC = () => {
 
-	const makeOptions = (options:Array<string>) => {
+	const makeOptions = (options:Array<string>, type:String) => {
 		return options.map((attribute, i) => (
-			<div className="option">
-				<input id={`option-${i}`} type="radio" value={attribute} />
+			<div className="option" key={`${type}-option-${i}`}>
+				<input id={`${type}-option-${i}`} type="radio" value={attribute} />
 				<label htmlFor={`option-${i}`}>{attribute}</label>
 			</div>
 		))
 	}
 
 	return (
-		<section>
-			<section className="options">
-				{makeOptions(skills)}
+		<section className="Search">
+			<h2>Find Applicants</h2>
+			<label htmlFor="skills-options" className="form-label">
+				What skills are you hiring for?
+			</label>
+			<section id="skills-options" className="options">
+				{makeOptions(skills, "skill")}
 			</section>
-			<section className="options">
-				{makeOptions(values)}
+			<label htmlFor="values-options" className="form-label">
+				What does your company value?
+			</label>
+			<section id="values-options" className="options">
+				{makeOptions(values, "value")}
 			</section>
 			<Link to="/" className="cta-button">Search</Link>
 		</section>
