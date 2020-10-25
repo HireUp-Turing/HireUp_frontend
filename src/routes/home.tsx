@@ -1,7 +1,7 @@
 import Home from '../components/Home/Home'
 
 export default {
-  applicant: {
+  home: {
     path: '/',
     component: Home,
   }
