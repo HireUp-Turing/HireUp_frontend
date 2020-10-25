@@ -4,13 +4,18 @@
 	background-color: $main-bg;
 	display: flex;
 	justify-content: space-between;
-	border-bottom: solid 1px $soft-accent;
+	border-bottom: solid .13em $soft-accent;
 	position: fixed;
 	width: 100%;
 
 	h1 {
 		font-family: 'Krona One', sans-serif;
 		color: $accent;
+		position: absolute;
+		bottom: -6px;
+		width: 100%;
+		font-size: 2.5em;
+		z-index: -1;
 	}
 	
 	nav {
@@ -20,7 +25,7 @@
 			font-family: 'Ubuntu', sans-serif;
 			font-weight: 500;
 			margin: 0 2em;
-			min-height: 100%;
+			min-height: 102%;
 			line-height: 5.5em;
 			font-size: 1em;
 		}
@@ -30,16 +35,24 @@
 		}
 		.active {
 			color: $accent;
-			border-bottom: .1em solid $accent;
+			border-bottom: .13em solid $accent;
 			font-style: italic;
 		}
 	}
 
 	.bm-burger-button {
 		position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 36px;
-    top: 36px;
+    width: 2em;
+    height: 2em;
+    left: 2em;
+    top: 1.5em;
+	}
+
+	.bm-menu {
+		background-color: $main-bg;
+	}
+
+	.bm-cross-button {
+		width: 10%;
 	}
 }
