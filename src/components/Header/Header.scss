@@ -8,8 +8,6 @@
 	position: fixed;
 	width: 100%;
 
-
-	
 	.header-nav {
 		display: flex;
 		justify-content: space-between;
@@ -53,6 +51,6 @@
 	}
 
 	.bm-item-list {
-		height: min-content;
+		display: flex;
 	}
 }
