@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { slide as Menu } from 'react-burger-menu'
 import './Header.scss'
 
@@ -15,7 +15,9 @@ const Header: React.FC = () => {
 			>
 				<Search />
 			</Menu>
-			<h1>HIRE UP</h1>
+			<h1><Link to="/">
+				HIRE UP
+			</Link></h1>
 			<nav className="header-nav">
 				<NavLink exact to="/">MY PROFILE</NavLink>
 				<NavLink exact to="/applicant" activeClassName="active">TEST</NavLink>
