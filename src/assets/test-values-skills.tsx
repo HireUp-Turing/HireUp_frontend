@@ -6,7 +6,6 @@ export const skillsData = [
   'public speaking',
   'customer service',
   'teamwork',
-  'communication',
   'accounting',
   'active listening',
   'adaptability',
@@ -33,10 +32,9 @@ export const skillsData = [
   'SEO/SEM marketing',
   'cloud and distributed',
   'data presentation'
-]
-// .map(skill => (
-  // {attribute: skill, checked: false}
-// ))
+].map(skill => (
+  {attribute: skill, checked: false}
+))
 
 export const valuesData = [
   //team values
@@ -87,10 +85,9 @@ export const valuesData = [
   'self-funded',
   'technical founder(s)',
   'PBC / B-CORP'
-]
-// .map(skill => (
-  // {attribute: skill, checked: false}
-// ))
+].map(skill => (
+  {attribute: skill, checked: false}
+))
 
 
 // const Search: React.FC = () => {
@@ -133,3 +130,7 @@ export const valuesData = [
 // 			)
 // 		})
 // 	}
+
+// An alternative to useState.
+
+// useReducer is usually preferable to useState when you have complex state logic that involves multiple sub-values. It also lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks.
