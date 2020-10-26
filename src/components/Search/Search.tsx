@@ -1,69 +1,70 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useReducer } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
 import { Link } from 'react-router-dom'
 
 import './Search.scss'
 
-// type Radio<T> = T extends Element 
+const initialState = {
+	skills: skillsData,
+	values: valuesData
+}
+
+function reducer(state:object, update: {type:string, change:Array<object>}) {
+	return {
+		...state,
+		[update.type]: update.change
+	}	
+}
 
 const Search: React.FC = () => {
-	const [values, setValues] = useState<Array<string>>([])
-	const [skills, setSkills] = useState<Array<string>>([])
-
-	const setOption = (event: {target: HTMLInputElement}) => {
-		const type = event.target.id.split('-')[0]
-		const attribute = event.target.value
-		const state = type === 'skill' ? skills : values
-		if (state.includes(attribute)) {
-			const index = state.indexOf(attribute)
-			console.log(index)
-			state.splice(index, 1)
-		} else {
-			state.push(attribute)	
-		}
-		type === 'skill' ? setSkills(state) : setValues(state)
+	const [state, dispatch] = useReducer(reducer, initialState)
+	
+	
+	const updateSelections = (event: {target: HTMLInputElement}, type:string) => {
+		debugger
+		const change:any = state[type]
+		const selection = event.target.value
+		const markedAttribute = change
+			.filter((option:any) => option.attribute === selection)
+		const index = state[type].indexOf(markedAttribute[0])
+		change[index].checked = change[index].checked ? false : true;
+		dispatch({type, change})
 	}
-
-	const checkIfSelected = (attribute:string, type:string): boolean => {
-		const state = type === 'skill' ? skills : values 
-		return state.includes(attribute)
-	}
-
-	const makeOptions = (options:Array<string>, type:string) => {
-		return options.map((attribute: any, i) => {
-			const isChecked: boolean = checkIfSelected(attribute, type)
+	
+	const makeOption = (options:Array<object>, type:string) => {
+		return options.map((option:any, i) => {
 			return (
 				<div className="option" key={`${type}-option-${i}`}>
 					<input 
 						id={`${type}-option-${i}`} 
-						type="radio" 
-						value={attribute} 
-						onChange={setOption}
-						checked={isChecked}				
+						type="checkbox" 
+						value={option.attribute} 
+						onChange={(event) => updateSelections(event, type)}
+						checked={option.checked}				
 					/>
-					<label htmlFor={`option-${i}`}>{attribute}</label>
+					<label htmlFor={`option-${i}`}>{option.attribute}</label>
 				</div>
 			)
 		})
 	}
 
 	return (
-		<section className="Search">
+		<form className="Search">
 			<h2>Find Applicants</h2>
 			<label htmlFor="skills-options" className="form-label">
 				What skills are you hiring for?
 			</label>
 			<section id="skills-options" className="options">
-				{makeOptions(skillsData, "skill")}
+				{makeOption(state.skills, "skills")}
 			</section>
 			<label htmlFor="values-options" className="form-label">
 				What does your company value?
 			</label>
 			<section id="values-options" className="options">
-				{makeOptions(valuesData, "value")}
+				{makeOption(state.values, "values")}
 			</section>
 			<Link to="/" className="cta-button">Search</Link>
-		</section>
+		</form>
 	)
 }
 
