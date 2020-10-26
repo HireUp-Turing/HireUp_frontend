@@ -29,9 +29,7 @@ export const skillsData = [
   'SEO/SEM marketing',
   'cloud and distributed',
   'data presentation'
-].map(skill => (
-  {attribute: skill, checked: false}
-))
+]
 
 export const valuesData = [
   //team values
@@ -82,6 +80,4 @@ export const valuesData = [
   'self-funded',
   'technical founder(s)',
   'PBC / B-CORP'
-].map(skill => (
-  {attribute: skill, checked: false}
-))
+]
