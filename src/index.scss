@@ -27,8 +27,12 @@ h1 {
   z-index: -1;
 }
 
+.cta-button { 
+  @include cta-buttons;
+	color: $main-bg;
+	border: none;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.accent-text {
+	font-family: 'Krona One', sans-serif;
 }

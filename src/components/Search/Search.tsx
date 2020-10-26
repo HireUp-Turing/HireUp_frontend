@@ -1,16 +1,21 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
 import { Redirect } from 'react-router-dom'
 
 import './Search.scss'
 
+type attributeList = {
+	skills: Array<string>
+	values: Array<string>
+}
+
 const initialState = {
-	skills: skillsData,
-	values: valuesData,
+	skills: [],
+	values: [],
 	runSearch: false
 }
 
-function reducer(state:object, update: {type:string, change:any}) {
+function reducer(state:object, update:{type:string, change:any}) {
 	return {
 		...state,
 		[update.type]: update.change
@@ -19,7 +24,25 @@ function reducer(state:object, update: {type:string, change:any}) {
 
 const Search: React.FC = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
-	
+
+	useEffect(() => {
+		fakeFetch()
+			.then(options => {
+				Object.keys(options).forEach(option => {
+					const checkboxes = options[option as keyof attributeList].map(skill => (
+						{ attribute: skill, checked: false }
+					))
+					dispatch({type: option, change: checkboxes})
+				})
+			})
+	}, [])
+
+	const fakeFetch = async () => {
+		return await {
+			skills: skillsData,
+			values: valuesData
+		}
+	}
 	
 	const updateSelections = (event: {target: HTMLInputElement}, type:string) => {
 		const change:any = state[type]
@@ -63,13 +86,13 @@ const Search: React.FC = () => {
 		<form className="Search" onSubmit={runSearch}>
 			<h2>Find Applicants</h2>
 			<label htmlFor="skills-options" className="form-label">
-				What skills are you hiring for?
+				What <span className="accent-text">skills</span> are you hiring for?
 			</label>
 			<section id="skills-options" className="options">
 				{makeOption(state.skills, "skills")}
 			</section>
 			<label htmlFor="values-options" className="form-label">
-				What does your company value?
+				What are your company <span className="accent-text">values</span>?
 			</label>
 			<section id="values-options" className="options">
 				{makeOption(state.values, "values")}

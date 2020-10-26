@@ -1,20 +1,27 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { slide as Menu } from 'react-burger-menu'
-import './Header.scss'
 
 import Search from '../Search/Search'
+import { OpenMenuContext } from '../../contexts/index'
+import './Header.scss'
 
 const Header: React.FC = () => {
 	return (
 		<header className="Header">
-			<Menu
-				customBurgerIcon={<img src="../search.svg" alt="search icon" />}
-				customCrossIcon={<img src="../close.svg" alt="close icon" />}
-				width="min-content"
-			>
-				<Search />
-			</Menu>
+			<OpenMenuContext.Consumer>
+				{({ isOpen, stateChangeHandler }) => (
+					<Menu
+						customBurgerIcon={<img src="../search.svg" alt="search icon" />}
+						customCrossIcon={<img src="../close.svg" alt="close icon" />}
+						width="min-content"
+						isOpen={isOpen}
+						onStateChange={(state) => stateChangeHandler(state)}
+					>
+						<Search />
+					</Menu>
+				)}
+			</OpenMenuContext.Consumer>
 			<h1><Link to="/">
 				HIRE UP
 			</Link></h1>
@@ -25,6 +32,5 @@ const Header: React.FC = () => {
 		</header>
 	)
 }
-
 
 export default Header

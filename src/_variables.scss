@@ -9,7 +9,7 @@ $soft-accent: #cdcdcd;
 $green: #037971;
 
 //mixins
-@mixin cta-button() {
+@mixin cta-buttons() {
 	text-decoration: none;
 	font-family: 'Krona One', sans-serif;
 	font-size: 1.1em;
