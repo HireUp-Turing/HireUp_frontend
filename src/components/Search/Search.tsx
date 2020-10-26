@@ -1,15 +1,16 @@
 import React, { useState, useReducer } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import './Search.scss'
 
 const initialState = {
 	skills: skillsData,
-	values: valuesData
+	values: valuesData,
+	runSearch: false
 }
 
-function reducer(state:object, update: {type:string, change:Array<object>}) {
+function reducer(state:object, update: {type:string, change:any}) {
 	return {
 		...state,
 		[update.type]: update.change
@@ -21,7 +22,6 @@ const Search: React.FC = () => {
 	
 	
 	const updateSelections = (event: {target: HTMLInputElement}, type:string) => {
-		debugger
 		const change:any = state[type]
 		const selection = event.target.value
 		const markedAttribute = change
@@ -48,8 +48,19 @@ const Search: React.FC = () => {
 		})
 	}
 
+	const makeQuery = () => {
+		return {
+			skills: state.skills.filter((skill:any) => skill.checked),
+			values: state.values.filter((value:any) => value.checked)
+		}
+	}
+
+	const runSearch = () => {
+		dispatch({type: 'runSearch', change:true})
+	}
+
 	return (
-		<form className="Search">
+		<form className="Search" onSubmit={runSearch}>
 			<h2>Find Applicants</h2>
 			<label htmlFor="skills-options" className="form-label">
 				What skills are you hiring for?
@@ -63,7 +74,17 @@ const Search: React.FC = () => {
 			<section id="values-options" className="options">
 				{makeOption(state.values, "values")}
 			</section>
-			<Link to="/" className="cta-button">Search</Link>
+			<button className="cta-button" onClick={runSearch}>
+				Search
+			</button>
+			{state.runSearch && 
+				<Redirect 
+					to={{
+						pathname: "/search-results",
+						state: { query: makeQuery() }
+					}}
+				/>
+			}
 		</form>
 	)
 }
