@@ -23,8 +23,3 @@
 .option {
   margin: .2em .2em;
 }
-
-.cta-button { 
-  @include cta-button;
-  color: $main-bg;
-}

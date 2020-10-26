@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
 import { Redirect } from 'react-router-dom'
 
