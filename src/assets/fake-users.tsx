@@ -26,7 +26,7 @@ values: ["paired programming", "teamwork"]
   {
 id: 4,
 username: "Chip",
-bio: "I'm the best one you could possibly hire",
+bio: "I'm the best one you could possibly hire. CHoose me and you'll make money like donald duck in that christmas movie, only you'll be happier, and contented in your decisions, and you'll trust that the money is clean and good and coming from the best place imagineable, the internet, where people are so impressed with your website that they set it as their home page even though they don't care about afghan wigs like at all.",
 updated_at: "Oct_20_etc_etc",
 skills: ["javascript", "react"],
 values: ["writing", "teamwork"]
