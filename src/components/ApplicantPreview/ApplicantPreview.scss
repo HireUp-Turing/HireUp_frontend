@@ -1,5 +1,33 @@
-//easy grid
-// .applicant-card {
-//   border: solid 1px black;
-//   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-// }
+@import '../../_variables.scss';
+
+.ApplicantPreview {
+  border-left: 1px solid $soft-accent;
+  border-bottom: 1px solid $soft-accent;
+  border-radius: 20px; 
+}
+
+.applicant-cards {
+  display: flex;
+  margin: 1em;
+}
+
+.applicant-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1em;
+  // border-bottom: 1px solid $soft-accent;
+}
+
+.matched-attributes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.applicant-icon {
+  border: 1px solid $soft-accent;
+  border-radius: 20px; 
+  width: 7em;
+  height: min-content;
+}

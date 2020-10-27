@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
+
 import { users as fakeUsers} from '../../assets/fake-users'
 import { UserResults } from '../../assets/definitions'
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'

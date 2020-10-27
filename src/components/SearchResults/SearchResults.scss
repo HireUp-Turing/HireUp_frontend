@@ -1,5 +1,6 @@
 .search-results {
-	padding-top: 27em;
-	
-
+	display: grid;
+	margin-top: 450px;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 2.5em;
 }
