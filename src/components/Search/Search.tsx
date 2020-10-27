@@ -3,6 +3,7 @@ import { skillsData, valuesData } from '../../assets/test-values-skills'
 import { Redirect } from 'react-router-dom'
 
 import './Search.scss'
+import { OpenMenuContext } from '../../contexts'
 
 type attributeList = {
 	skills: Array<string>
@@ -97,9 +98,16 @@ const Search: React.FC = () => {
 			<section id="values-options" className="options">
 				{makeOption(state.values, "values")}
 			</section>
-			<button className="cta-button" onClick={runSearch}>
-				Search
-			</button>
+			<OpenMenuContext.Consumer>
+				{({toggleMenu}) => (
+					<button className="cta-button" onClick={(event) => {
+						event.preventDefault()
+						toggleMenu()
+						runSearch()}}>
+						Search
+					</button>
+				)}
+			</OpenMenuContext.Consumer>
 			{state.runSearch && 
 				<Redirect 
 					to={{
