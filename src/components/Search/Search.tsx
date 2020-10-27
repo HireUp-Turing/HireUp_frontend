@@ -4,11 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
-
-type attributeList = {
-	skills: Array<string>
-	values: Array<string>
-}
+import { attributeList } from '../../assets/definitions'
 
 const initialState = {
 	skills: [],

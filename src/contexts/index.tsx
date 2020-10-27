@@ -1,10 +1,7 @@
 import React from 'react'
 
-type openStateType = {
-	isOpen: boolean
-	toggleMenu: () => void
-	stateChangeHandler: (value: {isOpen: boolean}) => void
-}
+import { openStateType } from '../assets/definitions'
+
 export const OpenMenuContext = React.createContext<openStateType>({
 	isOpen: false,
 	toggleMenu: () => {},
