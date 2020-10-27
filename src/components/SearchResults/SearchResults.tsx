@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
-
+import { RouteComponentProps } from 'react-router-dom'
 import { users as fakeUsers} from '../../assets/fake-users'
 import { UserResults } from '../../assets/definitions'
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
 import './SearchResults.scss'
 
-const SearchResults: React.FC = () => {
-  const [users, setUsers] = useState<Array<UserResults>>([])
+interface Props extends RouteComponentProps {}
 
-  useEffect(() => {
+const SearchResults: React.FC<Props> = (props) => {
+  const [users, setUsers] = useState<Array<UserResults>>([])
+  useEffect(() => { 
     fakeUserFetch()
     .then(data => setUsers(data))
   }, [])
