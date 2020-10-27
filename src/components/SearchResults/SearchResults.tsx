@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import { users as fakeUsers} from '../../assets/fake-users'
-import { UserResults } from '../../assets/definitions'
+import { UserResults, Query } from '../../assets/definitions'
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
 import './SearchResults.scss'
 
 interface SearchRedirectProps extends RouteComponentProps {}
-
-type Query = {
-    skills: Array<object>
-    values: Array<object>
-} 
 
 const SearchResults: React.FC<SearchRedirectProps> = (props) => {
   const [users, setUsers] = useState<Array<UserResults>>([])
@@ -35,9 +30,9 @@ const SearchResults: React.FC<SearchRedirectProps> = (props) => {
         id={user.id}
         username={user.username}
         bio={user.bio}
-        updated_at={user.updated_at}
         skills={user.skills}
         values={user.values}
+        query={query}
       />
     )
   })
