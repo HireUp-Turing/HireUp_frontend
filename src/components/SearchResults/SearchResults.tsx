@@ -5,16 +5,25 @@ import { UserResults } from '../../assets/definitions'
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
 import './SearchResults.scss'
 
-interface Props extends RouteComponentProps {}
+interface SearchRedirectProps extends RouteComponentProps {}
 
-const SearchResults: React.FC<Props> = (props) => {
+type Query = {
+    skills: Array<object>
+    values: Array<object>
+} 
+
+const SearchResults: React.FC<SearchRedirectProps> = (props) => {
   const [users, setUsers] = useState<Array<UserResults>>([])
-  useEffect(() => { 
-    fakeUserFetch()
-    .then(data => setUsers(data))
-  }, [])
 
-  const fakeUserFetch = async () => {
+  let query: unknown | any = props.location.state
+
+  useEffect(() => {
+    fakeUserFetch(query)
+    .then(data => setUsers(data))
+  }, [query])
+
+  const fakeUserFetch = async (query: Query) => {
+    console.log(query)
     return await fakeUsers
   }
   
@@ -34,7 +43,6 @@ const SearchResults: React.FC<Props> = (props) => {
   return (
     <main className="search-results">
       {userData}
-      <p>Hello Search Results</p>
     </main>
   )
 }
