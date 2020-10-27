@@ -12,7 +12,7 @@ export type attributeList = {
 	values: Array<string>
 }
 
-export type openStateType = {
+export type openMenuType = {
   isOpen: boolean
 	toggleMenu: () => void
 	stateChangeHandler: (value: {isOpen: boolean}) => void
