@@ -18,9 +18,10 @@ const SearchResults: React.FC<Props> = (props) => {
     return await fakeUsers
   }
   
-  let userData = users.map((user) => {
+  let userData = users.map((user, i) => {
     return ( 
       <ApplicantPreview 
+        key={`applicant-preview-${i}`}
         id={user.id}
         username={user.username}
         bio={user.bio}
