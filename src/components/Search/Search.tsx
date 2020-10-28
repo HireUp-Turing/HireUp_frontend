@@ -26,9 +26,11 @@ const Search: React.FC = () => {
 		fakeFetch()
 			.then(options => {
 				Object.keys(options).forEach(option => {
-					const checkboxes = options[option as keyof AttributeList].map(skill => (
-						{ attribute: skill, checked: false }
-					))
+					const checkboxes = options[option as keyof AttributeList].map(attribute => {
+						const checkbox = Object.assign(attribute)
+						checkbox.checked = false
+						return checkbox
+					})
 					dispatch({type: option, change: checkboxes})
 				})
 			})
