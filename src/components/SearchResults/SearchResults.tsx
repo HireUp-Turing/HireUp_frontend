@@ -19,7 +19,6 @@ const SearchResults: React.FC<SearchRedirectProps> = (props) => {
   }, [query])
 
   const fakeUserFetch = async (query: Query) => {
-    console.log(query)
     return await fakeUsers
   }
   
