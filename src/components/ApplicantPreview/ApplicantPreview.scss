@@ -4,32 +4,50 @@
   border-left: 1px solid $soft-accent;
   border-bottom: 1px solid $soft-accent;
   border-radius: 20px; 
+  text-decoration: none;
+  justify-content: center;
+
+  &:hover {    
+    .applicant-icon {
+    transform: rotate(0deg);
+    animation: roll 3s;
+    }
+  }
+
+  @keyframes roll {
+    0% {
+      transform: rotate(0)
+    }
+    100% {
+      transform: rotate(360deg)
+    }
+  }
 }
 
 .applicant-cards {
   display: flex;
-  margin: 1em;
 }
 
 .applicant-info {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: 1em;
-  // border-bottom: 1px solid $soft-accent;
+  text-align: left;
 }
 
 .matched-attributes {
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  width: 90%;
+  border-top: 1px solid $soft-accent;
 }
 
 .applicant-icon {
-  border: 1px solid $soft-accent;
-  border-radius: 20px; 
   width: 7em;
   height: min-content;
+  margin: 1em 0 0 2em;
 }
 
 .value-match {
