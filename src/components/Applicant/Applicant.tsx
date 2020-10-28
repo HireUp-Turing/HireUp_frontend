@@ -32,22 +32,25 @@ const Applicant: React.FC<ApplicantProps> = (props) => {
     }
   }
 
-  const isThisThere = (attribute: string, query:any):boolean => {
-
-    if (query && query.skills.includes(attribute) || query && query.values.includes(attribute)) {
-      return true
+const determineMatchedAttribute = (attribute: string, keyword: string, props: any):string => {
+		if (props.attributeMatches[keyword][0] && props.attributeMatches[keyword][0].attribute === attribute) {
+      return 'attribute-tag-highlight'
     } else {
-      return false
-    }
-  }
+      return 'attribute-tag'
+		}
+	}
 
   const makeTags = (keyword:string) => {
     const { skills, values } = applicant
     const container = keyword === 'skills' ? skills : values
-    return container.map(attribute => {
+    return container.map((attribute, i) => {
       return (
-        <p className={`attribute-tag${isThisThere(attribute, props.location.state) ? '-highlight' : ''}`
-        }>{attribute}</p>
+        <p 
+          className={determineMatchedAttribute(attribute, keyword, props.location.state)} 
+          key={`${keyword}-${i}`}
+        >
+          {attribute}
+        </p>
         )
       })
     }

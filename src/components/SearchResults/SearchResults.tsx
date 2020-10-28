@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 import { users as fakeUsers} from '../../assets/fake-users'
-import { UserResults, Query, SearchRedirectProps } from '../../assets/definitions'
+import { ApplicantResults, Query, SearchRedirectProps } from '../../assets/definitions'
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
 import './SearchResults.scss'
 
 
 const SearchResults: React.FC<SearchRedirectProps> = (props) => {
-  const [users, setUsers] = useState<Array<UserResults>>([])
+  const [users, setUsers] = useState<Array<ApplicantResults>>([])
 
   let query: unknown | any = props.location.state
 

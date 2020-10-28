@@ -1,6 +1,6 @@
 import { RouteComponentProps } from 'react-router-dom'
 
-export interface ApplicantCard extends UserResults {
+export interface ApplicantCard extends ApplicantResults {
   query: {query: Query}
 }
 
@@ -9,6 +9,14 @@ export interface ApplicantProfile {
 }
 
 export interface ApplicantProps extends RouteComponentProps {}
+
+export interface ApplicantResults {
+  id: number
+  username: string
+  bio: string
+  skills: Array<string>
+  values: Array<string>
+}
 
 export type AttributeList = {
 	skills: Array<string>
@@ -27,12 +35,3 @@ export type Query = {
 } 
 
 export interface SearchRedirectProps extends RouteComponentProps {}
-export interface UserResults {
-  id: number
-  username: string
-  bio: string
-  skills: Array<string>
-  values: Array<string>
-}
-
-
