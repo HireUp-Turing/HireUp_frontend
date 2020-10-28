@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react'
 
-import { users as fakeUsers} from '../../assets/fake-users'
-import { ApplicantResults, Query, SearchRedirectProps } from '../../assets/definitions'
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
+import { getApplicants } from '../../assets/api-calls'
+import { SearchResponse } from '../../assets/definitions'
+import { RouteComponentProps } from 'react-router-dom'
 import './SearchResults.scss'
 
 
-const SearchResults: React.FC<SearchRedirectProps> = (props) => {
-  const [users, setUsers] = useState<Array<ApplicantResults>>([])
+const SearchResults: React.FC<RouteComponentProps> = (props) => {
+  const [applicants, setApplicants] = useState<Array<SearchResponse>>([])
 
   let query: unknown | any = props.location.state
 
   useEffect(() => {
-    fakeUserFetch(query)
-    .then(data => setUsers(data))
+		getApplicants()
+    	.then(data => setApplicants(data.data))
   }, [query])
-
-  const fakeUserFetch = async (query: Query) => {
-    return await fakeUsers
-  }
   
-  let userData = users.map((user, i) => {
+  let applicantList = applicants.map((user, i) => {
     return ( 
       <ApplicantPreview 
         key={`applicant-preview-${i}`}
@@ -32,10 +29,11 @@ const SearchResults: React.FC<SearchRedirectProps> = (props) => {
         query={query}
       />
     )
-  })
+	})
+	
   return (
     <main className="search-results">
-      {userData}
+      {applicantList}
     </main>
   )
 }
