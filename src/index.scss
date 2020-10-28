@@ -1,7 +1,8 @@
 @import './variables';
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
+  color: $text;
 }
 
 body {
@@ -10,7 +11,7 @@ body {
   font-weight: 300;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: 'Krona One', sans-serif;
   color: $accent;
   a {
@@ -25,6 +26,20 @@ h1 {
   width: 100%;
   font-size: 2.5em;
   z-index: -1;
+}
+
+h3 {
+  color: $highlight;
+  margin: 0em;
+}
+
+h4 {
+  color: $text;
+}
+
+h4 > .accent-text {
+  color: $highlight;
+  opacity: 1;
 }
 
 .cta-button { 

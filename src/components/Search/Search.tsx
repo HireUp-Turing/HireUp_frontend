@@ -4,11 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
-
-type attributeList = {
-	skills: Array<string>
-	values: Array<string>
-}
+import { AttributeList } from '../../assets/definitions'
 
 const initialState = {
 	skills: [],
@@ -30,7 +26,7 @@ const Search: React.FC = () => {
 		fakeFetch()
 			.then(options => {
 				Object.keys(options).forEach(option => {
-					const checkboxes = options[option as keyof attributeList].map(skill => (
+					const checkboxes = options[option as keyof AttributeList].map(skill => (
 						{ attribute: skill, checked: false }
 					))
 					dispatch({type: option, change: checkboxes})
