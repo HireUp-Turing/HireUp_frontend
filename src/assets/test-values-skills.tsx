@@ -29,7 +29,9 @@ export const skillsData = [
   'SEO/SEM marketing',
   'cloud and distributed',
   'data presentation'
-]
+].map((skill, i) => (
+	{ attribute: skill, id: i }
+))
 
 export const valuesData = [
   //team values
@@ -80,4 +82,6 @@ export const valuesData = [
   'self-funded',
   'technical founder(s)',
   'PBC / B-CORP'
-]
+].map((value, i) => (
+	{ attribute: value, id: i }
+))
