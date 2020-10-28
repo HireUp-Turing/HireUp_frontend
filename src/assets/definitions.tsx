@@ -1,26 +1,30 @@
-import { RouteComponentProps } from 'react-router-dom'
-
-export interface ApplicantCard extends ApplicantResults {
+export interface ApplicantCard extends SearchResponse {
   query: {query: Query}
 }
 
 export interface ApplicantProfile {
-  username:string, bio:string, skills:Array<string>, values:Array<string>
+	username:string,
+	bio:string,
+	skills:Array<string>,
+	values:Array<string>
 }
 
-export interface ApplicantProps extends RouteComponentProps {}
-
-export interface ApplicantResults {
+export interface SearchResponse {
   id: number
   username: string
   bio: string
-  skills: Array<string>
-  values: Array<string>
+  skills: Array<Attribute>
+  values: Array<Attribute>
 }
 
 export type AttributeList = {
-	skills: Array<string>
-	values: Array<string>
+	skills: Array<Attribute>
+	values: Array<Attribute>
+}
+
+export type Attribute = {
+	attribute: string
+	id: number
 }
 
 export type OpenMenuType = {
@@ -32,6 +36,4 @@ export type OpenMenuType = {
 export type Query = {
   skills: Array<{attribute:string, checked:boolean}>
   values: Array<{attribute:string, checked:boolean}>
-} 
-
-export interface SearchRedirectProps extends RouteComponentProps {}
+}
