@@ -1,12 +1,5 @@
-import { queryAllByAltText } from '@testing-library/react';
+import {ApplicantProps, ApplicantProfile } from '../../assets/definitions'
 import React, { useEffect, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom'
-
-interface ApplicantProps extends RouteComponentProps {}
-
-interface ApplicantProfile {
-  username:string, bio:string, skills:Array<string>, values:Array<string>
-}
 
 const Applicant: React.FC<ApplicantProps> = (props) => {
   const [applicant, setApplicant] = useState<ApplicantProfile>({username: '', bio: '', skills: [], values: []})

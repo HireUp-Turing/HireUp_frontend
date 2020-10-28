@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
 
 import { users as fakeUsers} from '../../assets/fake-users'
-import { UserResults, Query } from '../../assets/definitions'
+import { UserResults, Query, SearchRedirectProps } from '../../assets/definitions'
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
 import './SearchResults.scss'
 
-interface SearchRedirectProps extends RouteComponentProps {}
 
 const SearchResults: React.FC<SearchRedirectProps> = (props) => {
   const [users, setUsers] = useState<Array<UserResults>>([])

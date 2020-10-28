@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { openMenuType } from '../assets/definitions'
+import { OpenMenuType } from '../assets/definitions'
 
-export const OpenMenuContext = React.createContext<openMenuType>({
+export const OpenMenuContext = React.createContext<OpenMenuType>({
 	isOpen: false,
 	toggleMenu: () => {},
 	stateChangeHandler: () => {}
