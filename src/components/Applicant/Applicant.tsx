@@ -1,7 +1,10 @@
-import {ApplicantProps, ApplicantProfile } from '../../assets/definitions'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-const Applicant: React.FC<ApplicantProps> = (props) => {
+import { ApplicantProfile } from '../../assets/definitions'
+import { getApplicantById } from '../../assets/api-calls'
+import { RouteComponentProps } from 'react-router-dom'
+
+const Applicant: React.FC<RouteComponentProps> = (props) => {
   const [applicant, setApplicant] = useState<ApplicantProfile>({username: '', bio: '', skills: [], values: []})
 
   const buildApplicant = (info:any) => {
@@ -16,24 +19,17 @@ const Applicant: React.FC<ApplicantProps> = (props) => {
   useEffect(() => {
     if (props.location.state) {
       buildApplicant(props.location.state)
-      console.log(applicant.username)
     } else {
-      fakeFetch()
-        .then(data => buildApplicant(data))
+			const match:any = props.match.params
+			getApplicantById(match.id)
+        .then(response => {
+					buildApplicant(response.data)
+				})
     }
-  }, [props.location.state])
-
-  const fakeFetch = async () => {
-    return await {
-      username: 'Champ',
-      bio: 'I am the best easter egg of them all',
-      skills: ['screens'],
-      values: ['gold']
-    }
-  }
+  }, [props.location.state, props.match.params])
 
 const determineMatchedAttribute = (attribute: string, keyword: string, props: any):string => {
-		if (props.attributeMatches[keyword][0] && props.attributeMatches[keyword][0].attribute === attribute) {
+		if (props && props.attributeMatches[keyword][0] && props.attributeMatches[keyword][0].attribute === attribute) {
       return 'attribute-tag-highlight'
     } else {
       return 'attribute-tag'
