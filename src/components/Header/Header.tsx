@@ -26,8 +26,8 @@ const Header: React.FC = () => {
 				HIRE UP
 			</Link></h1>
 			<nav className="header-nav">
-				<NavLink exact to="/">MY PROFILE</NavLink>
-				<NavLink exact to="/applicant" activeClassName="active">TEST</NavLink>
+				<NavLink exact to="/applicant/:id">MY PROFILE</NavLink>
+				<NavLink exact to="/applicant/:id/inbox">INBOX</NavLink>
 			</nav>
 		</header>
 	)
