@@ -2,7 +2,7 @@
 
 .Search {
   // position: absolute;
-  // left: 150%;
+  left: 150vw;
   background-color: main-bg;
   border-left: 5px double $soft-accent;
   margin: 5em 0em 0;
@@ -16,7 +16,7 @@
   animation: enter 1s forwards
 }
 
-#closed-menu {
+.exit {
   animation: exit 1s forwards
 }
 
@@ -43,10 +43,10 @@
 
 @keyframes enter {
 	from {
-		margin-right: -20em
+		margin-right: -15em
 	}
 	to {
-		margin-right: 0
+		margin-right: 5
 	}
 }
 

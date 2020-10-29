@@ -1,11 +1,11 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, useRef } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
 import { Redirect } from 'react-router-dom'
 
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
 import { AttributeList } from '../../assets/definitions'
-import { RouteComponentProps } from 'react-router-dom'
+import { ENETRESET } from 'constants'
 
 const initialState = {
 	skills: [],
@@ -86,14 +86,15 @@ const Search: React.FC = () => {
 		dispatch({type: 'runSearch', change:true})
 	}
 
+
+
 	return (
 		<OpenMenuContext.Consumer>
-			{({isOpen, toggleMenu}) => (
+			{({toggleMenu}) => (
 				<form 
-					className="Search enter" 
+					className="Search" 
 					onSubmit={runSearch} 
-					style={{animation: isOpen ? 'enter 1s forwards': 'exit 1s forwards'}
-				}>
+				>
 					<h2>Find Applicants</h2>
 					<label htmlFor="skills-options" className="form-label">
 						What <span className="accent-text">skills</span> are you hiring for?
@@ -111,7 +112,6 @@ const Search: React.FC = () => {
 								<button className="cta-button" onClick={(event) => {
 									event.preventDefault()
 									toggleMenu()
-									// console.log(isOpen)
 									runSearch()}}>
 									Search
 								</button>
