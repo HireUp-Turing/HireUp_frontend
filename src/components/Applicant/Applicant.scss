@@ -1,0 +1,80 @@
+@import '../../_variables.scss';
+
+.applicant-border {
+  border-right: 2px solid $soft-accent;
+  border-bottom: 2px solid $soft-accent;
+  border-radius: 20px; 
+}
+
+.applicant-profile {
+	display: flex;
+
+}
+
+.applicant-attributes {
+	display: flex;
+	justify-content: space-around;
+}
+
+.applicant-icon {
+	border-left: 2px solid $soft-accent;
+	border-radius: 50%;
+	padding: 1.5em;
+	animation: rubberBand 1s;
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.username {
+	color: $highlight;
+}
+
+h5 {
+	font-family: 'Krona One', sans-serif;
+	font-size: 1.2em;
+}
+
+.attribute-tag {
+	font-weight: 500;
+	letter-spacing: 1px;
+	border: 2px solid $soft-accent;
+	border-radius: 7px;
+	padding: .2em;
+	
+	&.highlight {
+		color: $main-bg;
+		border-color: $highlight;
+		background-color: $highlight;
+		letter-spacing: 2px;
+	}
+}
+
+
