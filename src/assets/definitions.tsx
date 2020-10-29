@@ -29,6 +29,7 @@ export type Attribute = {
 
 export type OpenMenuType = {
   isOpen: boolean,
+  setIsHidden: (value: boolean) => void
   toggleMenu: () => void
 }
 

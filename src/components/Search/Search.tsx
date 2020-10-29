@@ -38,7 +38,6 @@ const Search: React.FC = () => {
 	}, [])
 
 	const fakeFetch = async () => {
-		console.log('FETCH!')
 		return await {
 			skills: skillsData,
 			values: valuesData

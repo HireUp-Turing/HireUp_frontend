@@ -15,8 +15,9 @@ const App: React.FC = () => {
 			<div className="App">
 				<OpenMenuContext.Provider value={{
 					isOpen,
+					setIsHidden,
 					toggleMenu: () => {
-						setIsHidden(false)
+						// setIsHidden(false)
 						setIsOpen(!isOpen)
 						//add a method here that utilizes setIsOpen and closes the search menu
 					}
@@ -29,9 +30,11 @@ const App: React.FC = () => {
 					</Switch>
 				</OpenMenuContext.Provider>
 			</div>
-			<div className={isOpen ? 'enter': 'exit'} style={{display: isHidden ? 'none': ''}}>
-				<Search />
-			</div>
+			{!isHidden && 
+					<div className={isOpen ? 'enter': 'exit'} style={{display: isHidden ? 'none': ''}}>
+						<Search />
+					</div> 
+				}
 		</div>
   )
 }
