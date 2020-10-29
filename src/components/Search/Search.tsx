@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, SyntheticEvent } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
@@ -21,6 +21,7 @@ function reducer(state:object, update:{type:string, change:any}) {
 
 const Search: React.FC = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
+	// console.log(props)
 
 	useEffect(() => {
 		fakeFetch()
@@ -37,6 +38,7 @@ const Search: React.FC = () => {
 	}, [])
 
 	const fakeFetch = async () => {
+		console.log('FETCH!')
 		return await {
 			skills: skillsData,
 			values: valuesData
@@ -100,24 +102,19 @@ const Search: React.FC = () => {
 					<section id="values-options" className="options">
 						{makeOption(state.values, "values")}
 					</section>
-					<button 
+					<Link
+						to={{
+							pathname: "/search-results",
+							state: { query: makeQuery() }
+						}}
 						className="cta-button" 
-						onClick={(event) => {
-							event.preventDefault()
+				 		onClick={(event) => {
 							toggleMenu()
 							runSearch()
 						}}
 					>
 						Search
-					</button>
-					{state.runSearch && 
-						<Redirect 
-						to={{
-							pathname: "/search-results",
-							state: { query: makeQuery() }
-						}}
-						/>
-					}
+					</Link>
 				</form>
 			)}
 		</OpenMenuContext.Consumer>

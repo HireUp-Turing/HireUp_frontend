@@ -13,8 +13,11 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
   let query: unknown | any = props.location.state
 
   useEffect(() => {
-		getApplicants()
-    	.then(data => setApplicants(data.data))
+    getApplicants()
+    	.then(data => {
+        "QUERY CHANGE! FETCH"
+        setApplicants(data.data)
+      })
   }, [query])
   
   let applicantList = applicants.map((user, i) => {
