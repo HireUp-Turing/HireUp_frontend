@@ -6,29 +6,44 @@ import './Header.scss'
 
 const Header: React.FC = () => {
 	return (
-		<header className="Header">
-			<h1><Link to="/">
-				HIRE UP
-			</Link></h1>
-			<OpenMenuContext.Consumer>
-				{({ isOpen, toggleMenu }) => (
-					<nav className="header-nav">
-				<NavLink exact to="/applicant/:id">MY PROFILE</NavLink>
-				<NavLink exact to="/applicant/:id/inbox">INBOX</NavLink>
-				<img 
-					src="/search.svg" 
-					alt="search-icon" 
-					className="search-icon"
-					title="search" 
-					onClick={() => {
+		<OpenMenuContext.Consumer>
+			{({ isOpen, setIsHidden, toggleMenu }) => {
+				const hideMenu = () => {
+					if (isOpen) {
 						toggleMenu()
-						console.log(isOpen)
+						setTimeout(() => {
+							setIsHidden(true)
+						}, 500)
 					}
-				}/>
-			</nav>
-				)}
-			</OpenMenuContext.Consumer>
-		</header>
+				}
+			return (
+				<header className="Header">
+					<h1>
+						<Link to="/" onClick={hideMenu}>
+							HIRE UP
+						</Link>
+					</h1>
+					<nav className="header-nav">
+						<NavLink exact to="/applicant/:id" onClick={hideMenu}>
+							MY PROFILE
+						</NavLink>
+						<NavLink exact to="/applicant/:id/inbox" onClick={hideMenu}>
+							INBOX
+						</NavLink>
+						<img 
+							src="/search.svg" 
+							alt="search-icon" 
+							className="search-icon"
+							title="search" 
+							onClick={() => {
+								setIsHidden(false)
+								toggleMenu()
+							}
+						}/>
+					</nav>
+				</header>
+			)}}
+		</OpenMenuContext.Consumer>
 	)
 }
 

@@ -13,11 +13,32 @@ const Home: React.FC = () => {
 			</section>
 			<nav className="cta-buttons">
 				<OpenMenuContext.Consumer>
-					{({ toggleMenu }) => (
-						<button className="cta-button" onClick={toggleMenu}>Find Applicants</button>
+					{({isOpen, setIsHidden, toggleMenu }) => (
+						<>
+							<button className="cta-button" onClick={() => {
+									if(isOpen) {
+										toggleMenu()
+									} else {
+										setIsHidden(false)
+										toggleMenu()
+									}
+							}}>Find Applicants</button>
+							<Link 
+								to="/" 
+								onClick={() => {
+									if (isOpen) {
+										toggleMenu()
+										setTimeout(() => {
+											setIsHidden(true)
+										}, 500)
+									}
+								}}
+							>
+								I'm an Applicant
+							</Link>
+						</>	
 					)}
 				</OpenMenuContext.Consumer>
-				<Link to="/">I'm an Applicant</Link>
 			</nav>
 		</main>
 	)
