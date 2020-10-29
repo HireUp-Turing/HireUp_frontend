@@ -23,6 +23,10 @@ const Search: React.FC = () => {
 	const [query, setQuery] = useState({skills: [], values: []})
 
 	useEffect(() => {
+		updateSearchOptions()
+	}, [])
+
+	const updateSearchOptions = () => {
 		getSearchOptions()
 			.then(data => {
 				let options = data.data[0]
@@ -32,11 +36,11 @@ const Search: React.FC = () => {
 						checkbox.checked = false
 						return checkbox
 					})
-					dispatch({type: option, change: checkboxes})
+					dispatch({ type: option, change: checkboxes })
 				})
 			})
 			.catch(error => setError('Something went wrong!'))
-	}, [])
+	}
 
 	const updateSelections = (event: SyntheticEvent, type:string, selection: string) => {
 		const change:any = state[type]
@@ -100,19 +104,30 @@ const Search: React.FC = () => {
 					<section id="values-options" className="options">
 						{makeOption(state.values, "values")}
 					</section>
-					<Link
-						to={{
-							pathname: "/search-results",
-							state: { query: query }
-						}}
-						className="cta-button" 
-				 		onClick={() => {
-							checkQuery()
-						}}
-					>
-						Search
-					</Link>
-					{error !== '' && <h3 className="search-error">{error}</h3>}
+					<div>
+						<Link
+							to={{
+								pathname: "/search-results",
+								state: { query: query }
+							}}
+							className="cta-button" 
+							onClick={() => {
+								checkQuery()
+							}}
+						>
+							Search
+						</Link>
+						<button
+							className="cta-button"
+							onClick={(event) => {
+								event.preventDefault()
+								updateSearchOptions()
+							}}
+						>
+							Clear
+						</button>
+					</div>
+					{error !== "" && <h3 className="search-error">{error}</h3>}
 				</form>
 			)}}
 		</OpenMenuContext.Consumer>
