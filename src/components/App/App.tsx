@@ -12,13 +12,13 @@ const App: React.FC = () => {
 	const [isHidden, setIsHidden] = useState<boolean>(true)
   return (
 		<div className="page-wrap">
-
 			<div className="App">
 				<OpenMenuContext.Provider value={{
 					isOpen,
 					toggleMenu: () => {
 						setIsHidden(false)
 						setIsOpen(!isOpen)
+						//add a method here that utilizes setIsOpen and closes the search menu
 					}
 				}}>
 					<Header />
@@ -29,7 +29,7 @@ const App: React.FC = () => {
 					</Switch>
 				</OpenMenuContext.Provider>
 			</div>
-			<div className={isOpen ? 'enter': 'exit'} style={{display: isHidden? 'none': ''}}>
+			<div className={isOpen ? 'enter': 'exit'} style={{display: isHidden ? 'none': ''}}>
 				<Search />
 			</div>
 		</div>
