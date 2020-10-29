@@ -14,6 +14,8 @@ const Header: React.FC = () => {
 						setTimeout(() => {
 							setIsHidden(true)
 						}, 500)
+					} else {
+						setIsHidden(true)
 					}
 				}
 			return (

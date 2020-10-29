@@ -1,10 +1,9 @@
 import React, { useState, useReducer, useEffect, SyntheticEvent } from 'react'
-import { skillsData, valuesData } from '../../assets/test-values-skills'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
-import { AttributeList } from '../../assets/definitions'
+import { getSearchOptions } from '../../assets/api-calls'
 
 const initialState = {
 	skills: [],
@@ -24,24 +23,23 @@ const Search: React.FC = () => {
 	const [query, setQuery] = useState({skills: [], values: []})
 
 	useEffect(() => {
-		fakeFetch()
-			.then(options => {
+		updateSearchOptions()
+	}, [])
+
+	const updateSearchOptions = () => {
+		getSearchOptions()
+			.then(data => {
+				let options = data.data[0]
 				Object.keys(options).forEach(option => {
-					const checkboxes = options[option as keyof AttributeList].map(attribute => {
+					const checkboxes = options[option].map((attribute: object) => {
 						const checkbox = Object.assign(attribute)
 						checkbox.checked = false
 						return checkbox
 					})
-					dispatch({type: option, change: checkboxes})
+					dispatch({ type: option, change: checkboxes })
 				})
 			})
-	}, [])
-
-	const fakeFetch = async () => {
-		return await {
-			skills: skillsData,
-			values: valuesData
-		}
+			.catch(error => setError('Something went wrong!'))
 	}
 
 	const updateSelections = (event: SyntheticEvent, type:string, selection: string) => {
@@ -80,7 +78,7 @@ const Search: React.FC = () => {
 	
 	const checkQuery = () => {
 		if (query.skills.length === 0 && query.values.length === 0) {
-			setError('Please select some search options!')
+			setError('Please select at least one search option and try again.')
 		} else {
 			setError('')
 		}
@@ -94,7 +92,6 @@ const Search: React.FC = () => {
 					className="Search" 
 				>
 					<h2>Find Applicants</h2>
-					{error !== '' && <h3>{error}</h3>}
 					<label htmlFor="skills-options" className="form-label">
 						What <span className="accent-text">skills</span> are you hiring for?
 					</label>
@@ -107,18 +104,30 @@ const Search: React.FC = () => {
 					<section id="values-options" className="options">
 						{makeOption(state.values, "values")}
 					</section>
-					<Link
-						to={{
-							pathname: "/search-results",
-							state: { query: query }
-						}}
-						className="cta-button" 
-				 		onClick={() => {
-							checkQuery()
-						}}
-					>
-						Search
-					</Link>
+					<div>
+						<Link
+							to={{
+								pathname: "/search-results",
+								state: { query: query }
+							}}
+							className="cta-button" 
+							onClick={() => {
+								checkQuery()
+							}}
+						>
+							Search
+						</Link>
+						<button
+							className="cta-button"
+							onClick={(event) => {
+								event.preventDefault()
+								updateSearchOptions()
+							}}
+						>
+							Clear
+						</button>
+					</div>
+					{error !== "" && <h3 className="search-error">{error}</h3>}
 				</form>
 			)}}
 		</OpenMenuContext.Consumer>
