@@ -29,7 +29,7 @@ const ApplicantPreview: React.FC<ApplicantCard> = (props) => {
     >
         <div className="applicant-cards">
           <img 
-            className="applicant-icon"
+            className="preview-icon"
             src={`https://avatars.dicebear.com/api/bottts/${props.username}.svg`} 
             alt={`${props.username}'s icon`}
           />

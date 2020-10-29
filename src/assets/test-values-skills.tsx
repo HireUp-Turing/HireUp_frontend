@@ -1,5 +1,5 @@
 export const skillsData = [
-  'creativity', 
+  'rails', 
   'communication', 
   'critical thinking', 
   'problem solving', 

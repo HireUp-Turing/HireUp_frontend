@@ -8,7 +8,7 @@
   justify-content: center;
 
   &:hover {    
-    .applicant-icon {
+    .preview-icon {
     transform: rotate(0deg);
     animation: roll 3s;
     }
@@ -44,7 +44,7 @@
   border-top: 1px solid $soft-accent;
 }
 
-.applicant-icon {
+.preview-icon {
   width: 7em;
   height: min-content;
   margin: 1em 0 0 2em;
