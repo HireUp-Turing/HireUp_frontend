@@ -9,14 +9,17 @@ import './App.scss'
 
 const App: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
+	const [isHidden, setIsHidden] = useState<boolean>(true)
   return (
 		<div className="page-wrap">
 
 			<div className="App">
 				<OpenMenuContext.Provider value={{
 					isOpen,
-					toggleMenu: () => setIsOpen(!isOpen),
-					stateChangeHandler: (newState) => setIsOpen(newState.isOpen)
+					toggleMenu: () => {
+						setIsHidden(false)
+						setIsOpen(!isOpen)
+					}
 				}}>
 					<Header />
 					<Switch>
@@ -26,7 +29,7 @@ const App: React.FC = () => {
 					</Switch>
 				</OpenMenuContext.Provider>
 			</div>
-			<div className={isOpen ? 'enter': 'exit'}>
+			<div className={isOpen ? 'enter': 'exit'} style={{display: isHidden? 'none': ''}}>
 				<Search />
 			</div>
 		</div>

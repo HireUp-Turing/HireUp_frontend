@@ -1,8 +1,6 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { slide as Menu } from 'react-burger-menu'
 
-import Search from '../Search/Search'
 import { OpenMenuContext } from '../../contexts/index'
 import './Header.scss'
 
