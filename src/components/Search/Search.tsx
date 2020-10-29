@@ -9,7 +9,6 @@ import { AttributeList } from '../../assets/definitions'
 const initialState = {
 	skills: [],
 	values: [],
-	runSearch: false
 }
 
 function reducer(state:object, update:{type:string, change:any}) {
@@ -21,8 +20,6 @@ function reducer(state:object, update:{type:string, change:any}) {
 
 const Search: React.FC = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
-	// console.log(props)
-
 	useEffect(() => {
 		fakeFetch()
 			.then(options => {
@@ -44,7 +41,7 @@ const Search: React.FC = () => {
 			values: valuesData
 		}
 	}
-	
+
 	const updateSelections = (event: SyntheticEvent, type:string, selection: string) => {
 		const change:any = state[type]
 		const markedAttribute = change
@@ -78,16 +75,11 @@ const Search: React.FC = () => {
 		}
 	}
 
-	const runSearch = () => {
-		dispatch({type: 'runSearch', change:true})
-	}
-
 	return (
 		<OpenMenuContext.Consumer>
 			{({toggleMenu}) => (
 				<form 
 					className="Search" 
-					onSubmit={runSearch} 
 				>
 					<h2>Find Applicants</h2>
 					<label htmlFor="skills-options" className="form-label">
@@ -108,9 +100,8 @@ const Search: React.FC = () => {
 							state: { query: makeQuery() }
 						}}
 						className="cta-button" 
-				 		onClick={(event) => {
+				 		onClick={() => {
 							toggleMenu()
-							runSearch()
 						}}
 					>
 						Search
