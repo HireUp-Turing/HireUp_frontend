@@ -15,11 +15,16 @@ const Header: React.FC = () => {
 					<nav className="header-nav">
 				<NavLink exact to="/applicant/:id">MY PROFILE</NavLink>
 				<NavLink exact to="/applicant/:id/inbox">INBOX</NavLink>
-				<button onClick={() => {
-					toggleMenu()
-					console.log(isOpen)
-				}
-				}>ok</button>
+				<img 
+					src="/search.svg" 
+					alt="search-icon" 
+					className="search-icon"
+					title="search" 
+					onClick={() => {
+						toggleMenu()
+						console.log(isOpen)
+					}
+				}/>
 			</nav>
 				)}
 			</OpenMenuContext.Consumer>

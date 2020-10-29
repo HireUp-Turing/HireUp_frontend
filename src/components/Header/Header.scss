@@ -3,7 +3,7 @@
 .Header {
 	background-color: $main-bg;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	border-bottom: solid .13em $soft-accent;
 	position: fixed;
 	width: 100%;
@@ -27,6 +27,10 @@
 			color: $accent;
 			border-bottom: .13em solid $accent;
 			font-style: italic;
+		}
+		.search-icon {
+			margin: 0 2em;
+			width: 3em;
 		}
 	}
 
