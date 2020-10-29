@@ -1,11 +1,10 @@
-import React, { useReducer, useEffect, useRef } from 'react'
+import React, { useReducer, useEffect, SyntheticEvent } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
 import { Redirect } from 'react-router-dom'
 
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
 import { AttributeList } from '../../assets/definitions'
-import { ENETRESET } from 'constants'
 
 const initialState = {
 	skills: [],
@@ -37,10 +36,6 @@ const Search: React.FC = () => {
 			})
 	}, [])
 
-	useEffect(() => {
-
-	}, [])
-
 	const fakeFetch = async () => {
 		return await {
 			skills: skillsData,
@@ -48,9 +43,8 @@ const Search: React.FC = () => {
 		}
 	}
 	
-	const updateSelections = (event: {target: HTMLInputElement}, type:string) => {
+	const updateSelections = (event: SyntheticEvent, type:string, selection: string) => {
 		const change:any = state[type]
-		const selection = event.target.value
 		const markedAttribute = change
 			.filter((option:any) => option.attribute === selection)
 		const index = state[type].indexOf(markedAttribute[0])
@@ -61,16 +55,16 @@ const Search: React.FC = () => {
 	const makeOption = (options:Array<object>, type:string) => {
 		return options.map((option:any, i) => {
 			return (
-				<div className="option" key={`${type}-option-${i}`}>
-					<input 
-						id={`${type}-option-${i}`} 
-						type="checkbox" 
-						value={option.attribute} 
-						onChange={(event) => updateSelections(event, type)}
-						checked={option.checked}				
-					/>
-					<label htmlFor={`option-${i}`}>{option.attribute}</label>
-				</div>
+				<button 
+					className={option.checked ? 'attribute-tag highlight' : 'attribute-tag'}
+					key={`${type}-option-${i}`}
+					onClick={(event) => {
+						event.preventDefault()
+						updateSelections(event, type, option.attribute)
+					}}
+				>
+					{option.attribute}
+				</button>
 			)
 		})
 	}
@@ -85,8 +79,6 @@ const Search: React.FC = () => {
 	const runSearch = () => {
 		dispatch({type: 'runSearch', change:true})
 	}
-
-
 
 	return (
 		<OpenMenuContext.Consumer>
@@ -108,14 +100,16 @@ const Search: React.FC = () => {
 					<section id="values-options" className="options">
 						{makeOption(state.values, "values")}
 					</section>
-
-								<button className="cta-button" onClick={(event) => {
-									event.preventDefault()
-									toggleMenu()
-									runSearch()}}>
-									Search
-								</button>
-
+					<button 
+						className="cta-button" 
+						onClick={(event) => {
+							event.preventDefault()
+							toggleMenu()
+							runSearch()
+						}}
+					>
+						Search
+					</button>
 					{state.runSearch && 
 						<Redirect 
 						to={{
