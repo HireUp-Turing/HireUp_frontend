@@ -10,6 +10,10 @@ const App: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
+		<div className="body">
+		<section className="search-window">
+			hello
+		</section>
 		<div className="App">
 			<OpenMenuContext.Provider value={{
 				isOpen,
@@ -23,6 +27,7 @@ const App: React.FC = () => {
 					))}
 				</Switch>
 			</OpenMenuContext.Provider>
+		</div>
 		</div>
   )
 }

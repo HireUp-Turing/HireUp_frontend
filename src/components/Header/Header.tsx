@@ -9,7 +9,7 @@ import './Header.scss'
 const Header: React.FC = () => {
 	return (
 		<header className="Header">
-			<OpenMenuContext.Consumer>
+			{/* <OpenMenuContext.Consumer>
 				{({ isOpen, stateChangeHandler }) => (
 					<Menu
 						customBurgerIcon={<img src="../search.svg" alt="search icon" />}
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 						<Search />
 					</Menu>
 				)}
-			</OpenMenuContext.Consumer>
+			</OpenMenuContext.Consumer> */}
 			<h1><Link to="/">
 				HIRE UP
 			</Link></h1>
