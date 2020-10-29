@@ -32,3 +32,15 @@ export const getSearchOptions = (): Promise<any> => {
 			}
 		})
 }
+
+export const getNames = (): Promise<any> => {
+	let name
+	return fetch('https://namey.muffinlabs.com/name.json?type=surname&min_freq=90')
+		.then(response => {
+			return response.json()
+		})
+		.then(data => {
+			name = data[0]
+			return name
+		})
+}
