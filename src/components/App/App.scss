@@ -5,6 +5,19 @@
 	background-color: $main-bg;
 	height: 100vh;
 	overflow: scroll;
+	width: 100%;
+}
+
+.page-wrap {
+	display: flex;
+	width:100%;
+	background-color: $main-bg
+}
+
+.search-window {
+	height: 100%;
+	width: min-content;
+	animation: enter 1s
 }
 
 main {
@@ -12,6 +25,8 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
-	margin: 0 10em 0 10em;
+	padding: 0 10em 0 10em;
 	height: 100%;
+	width: 100%;
+	z-index: 3;
 }

@@ -1,10 +1,24 @@
 @import '../../_variables.scss';
 
 .Search {
-  margin: 1em 2em;
+  left: 150vw;
+  background-color: main-bg;
+  border-left: 5px double $soft-accent;
+  height: 100%;
+  margin: 5em 0em 0;
+  padding-left: 2em;
+  padding-right: 2em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.enter {
+  animation: enter .75s forwards
+}
+
+.exit {
+  animation: exit 1.25s forwards
 }
 
 .options {
@@ -15,11 +29,37 @@
   align-items: flex-start;
   flex-wrap: wrap;
   overflow: scroll;
-  height: 20em;
+  height: 17em;
   width: 23em;
   padding: 1em;
+
+  > * {
+    border: 1px solid $soft-accent;;
+  }
 }
 
 .option {
   margin: .2em .2em;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes enter {
+	from {
+		margin-right: -30em
+	}
+	to {
+		margin-right: 5
+	}
+}
+
+@keyframes exit {
+	from {
+		margin-right: 0em
+	}
+	to {
+		margin-right: -40em
+	}
 }

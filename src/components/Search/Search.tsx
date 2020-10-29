@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, SyntheticEvent } from 'react'
 import { skillsData, valuesData } from '../../assets/test-values-skills'
 import { Redirect } from 'react-router-dom'
 
@@ -43,9 +43,8 @@ const Search: React.FC = () => {
 		}
 	}
 	
-	const updateSelections = (event: {target: HTMLInputElement}, type:string) => {
+	const updateSelections = (event: SyntheticEvent, type:string, selection: string) => {
 		const change:any = state[type]
-		const selection = event.target.value
 		const markedAttribute = change
 			.filter((option:any) => option.attribute === selection)
 		const index = state[type].indexOf(markedAttribute[0])
@@ -56,16 +55,16 @@ const Search: React.FC = () => {
 	const makeOption = (options:Array<object>, type:string) => {
 		return options.map((option:any, i) => {
 			return (
-				<div className="option" key={`${type}-option-${i}`}>
-					<input 
-						id={`${type}-option-${i}`} 
-						type="checkbox" 
-						value={option.attribute} 
-						onChange={(event) => updateSelections(event, type)}
-						checked={option.checked}				
-					/>
-					<label htmlFor={`option-${i}`}>{option.attribute}</label>
-				</div>
+				<button 
+					className={option.checked ? 'attribute-tag highlight' : 'attribute-tag'}
+					key={`${type}-option-${i}`}
+					onClick={(event) => {
+						event.preventDefault()
+						updateSelections(event, type, option.attribute)
+					}}
+				>
+					{option.attribute}
+				</button>
 			)
 		})
 	}
@@ -82,39 +81,46 @@ const Search: React.FC = () => {
 	}
 
 	return (
-		<form className="Search" onSubmit={runSearch}>
-			<h2>Find Applicants</h2>
-			<label htmlFor="skills-options" className="form-label">
-				What <span className="accent-text">skills</span> are you hiring for?
-			</label>
-			<section id="skills-options" className="options">
-				{makeOption(state.skills, "skills")}
-			</section>
-			<label htmlFor="values-options" className="form-label">
-				What are your company <span className="accent-text">values</span>?
-			</label>
-			<section id="values-options" className="options">
-				{makeOption(state.values, "values")}
-			</section>
-			<OpenMenuContext.Consumer>
-				{({toggleMenu}) => (
-					<button className="cta-button" onClick={(event) => {
-						event.preventDefault()
-						toggleMenu()
-						runSearch()}}>
+		<OpenMenuContext.Consumer>
+			{({toggleMenu}) => (
+				<form 
+					className="Search" 
+					onSubmit={runSearch} 
+				>
+					<h2>Find Applicants</h2>
+					<label htmlFor="skills-options" className="form-label">
+						What <span className="accent-text">skills</span> are you hiring for?
+					</label>
+					<section id="skills-options" className="options">
+						{makeOption(state.skills, "skills")}
+					</section>
+					<label htmlFor="values-options" className="form-label">
+						What are your company <span className="accent-text">values</span>?
+					</label>
+					<section id="values-options" className="options">
+						{makeOption(state.values, "values")}
+					</section>
+					<button 
+						className="cta-button" 
+						onClick={(event) => {
+							event.preventDefault()
+							toggleMenu()
+							runSearch()
+						}}
+					>
 						Search
 					</button>
-				)}
-			</OpenMenuContext.Consumer>
-			{state.runSearch && 
-				<Redirect 
-					to={{
-						pathname: "/search-results",
-						state: { query: makeQuery() }
-					}}
-				/>
-			}
-		</form>
+					{state.runSearch && 
+						<Redirect 
+						to={{
+							pathname: "/search-results",
+							state: { query: makeQuery() }
+						}}
+						/>
+					}
+				</form>
+			)}
+		</OpenMenuContext.Consumer>
 	)
 }
 
