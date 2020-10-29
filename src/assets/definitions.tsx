@@ -30,7 +30,6 @@ export type Attribute = {
 export type OpenMenuType = {
   isOpen: boolean
   toggleMenu: () => void
-  stateChangeHandler: (value: {isOpen: boolean}) => void
 }
 
 export type Query = {

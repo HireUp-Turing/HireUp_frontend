@@ -68,6 +68,8 @@ h5 {
 	border: 2px solid $soft-accent;
 	border-radius: 7px;
 	padding: .2em;
+  background-color: $main-bg;
+  margin: .2em;
 	
 	&.highlight {
 		color: $main-bg;

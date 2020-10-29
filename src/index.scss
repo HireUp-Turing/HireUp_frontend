@@ -9,6 +9,7 @@ body {
   margin: 0; 
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
+  background-color: $main-bg;
 }
 
 h1, h2, h3 {
@@ -37,6 +38,10 @@ h1 {
 			bottom: -6px;
 		}
 	}
+}
+
+h2 {
+  margin: .5em;
 }
 
 h3 {
