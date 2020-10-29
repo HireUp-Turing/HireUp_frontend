@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { getNames } from '../../assets/api-calls'
 import './ApplicantForm.scss'
 
 const ApplicantForm: React.FC = () => {
 	const [username, setUsername] = useState<string>('')
+
+	useEffect(() => {
+		makeUserName()
+	}, [])
+
+	const makeUserName = async () => {
+		let name = await getNames()
+		setUsername(name)
+	}
 
 	return (
 		<main className="Applicant">
@@ -25,16 +34,14 @@ const ApplicantForm: React.FC = () => {
 						<input id="email" className="applicant-input" />
 						<label htmlFor="bio">Bio</label>
 						<input id="bio" className="applicant-input" />
-						<label htmlFor="bio">Codename</label>
-						<button
+						<label htmlFor="codename">Codename
+						<img className="refresh-button" src="./refresh-pink.svg" alt="refresh-button"
 							onClick={ async () => {
-								let name = await getNames()
-							setUsername(name)
+								makeUserName()
 							}}
-						>
-							refresh
-						</button>
-						<p>{username}</p>
+							/>
+						</label>
+						<input id="codename" className="applicant-input" placeholder={username} disabled/>
 					</div>
 				</div>
 				<h5>Select your skills and values</h5>
