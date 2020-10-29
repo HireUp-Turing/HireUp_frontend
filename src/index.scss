@@ -25,7 +25,18 @@ h1 {
   bottom: -6px;
   width: 100%;
   font-size: 2.5em;
-  z-index: -1;
+	z-index: -1;
+	
+	animation: 1s slide, 2.5s bounce;
+
+	@keyframes slide {
+		from {
+			bottom: 100px;
+		}
+		to {
+			bottom: -6px;
+		}
+	}
 }
 
 h3 {
