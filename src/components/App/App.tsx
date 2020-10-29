@@ -17,9 +17,7 @@ const App: React.FC = () => {
 					isOpen,
 					setIsHidden,
 					toggleMenu: () => {
-						// setIsHidden(false)
 						setIsOpen(!isOpen)
-						//add a method here that utilizes setIsOpen and closes the search menu
 					}
 				}}>
 					<Header />
