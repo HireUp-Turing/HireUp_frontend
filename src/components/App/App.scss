@@ -1,32 +1,24 @@
 @import '../../_variables.scss';
 
 .App {
+	// position:absolute;
 	text-align: center;
 	background-color: $main-bg;
 	height: 100vh;
 	overflow: scroll;
 	width: 100%;
-
 }
 
 .body {
 	display: flex;
+	width:100%;
+	background-color: $main-bg
 }
 
 .search-window {
-	// position: absolute;
 	height: 100%;
-	width: 20em;
-	animation: butt 1s
-}
-
-@keyframes butt {
-	from {
-		margin-right: -20em
-	}
-	to {
-		margin-right: 0
-	}
+	width: min-content;
+	animation: enter 1s
 }
 
 main {
@@ -34,7 +26,8 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
-	margin: 0 10em 0 10em;
+	padding: 0 10em 0 10em;
 	height: 100%;
 	width: 100%;
+	z-index: 3;
 }

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { routes } from '../../routes/index'
 import { Route, Switch } from 'react-router-dom'
 
-import Header from '../../components/Header/Header'
+import Header from '../Header/Header'
+import Search from '../Search/Search'
 import { OpenMenuContext } from '../../contexts/index'
 import './App.scss'
 
@@ -11,9 +12,7 @@ const App: React.FC = () => {
 
   return (
 		<div className="body">
-		<section className="search-window">
-			hello
-		</section>
+
 		<div className="App">
 			<OpenMenuContext.Provider value={{
 				isOpen,
@@ -28,6 +27,8 @@ const App: React.FC = () => {
 				</Switch>
 			</OpenMenuContext.Provider>
 		</div>
+		<Search />
+		}
 		</div>
   )
 }

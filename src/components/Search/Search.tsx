@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
 import { AttributeList } from '../../assets/definitions'
+import { RouteComponentProps } from 'react-router-dom'
 
 const initialState = {
 	skills: [],
@@ -34,6 +35,10 @@ const Search: React.FC = () => {
 					dispatch({type: option, change: checkboxes})
 				})
 			})
+	}, [])
+
+	useEffect(() => {
+
 	}, [])
 
 	const fakeFetch = async () => {
@@ -82,39 +87,46 @@ const Search: React.FC = () => {
 	}
 
 	return (
-		<form className="Search" onSubmit={runSearch}>
-			<h2>Find Applicants</h2>
-			<label htmlFor="skills-options" className="form-label">
-				What <span className="accent-text">skills</span> are you hiring for?
-			</label>
-			<section id="skills-options" className="options">
-				{makeOption(state.skills, "skills")}
-			</section>
-			<label htmlFor="values-options" className="form-label">
-				What are your company <span className="accent-text">values</span>?
-			</label>
-			<section id="values-options" className="options">
-				{makeOption(state.values, "values")}
-			</section>
-			<OpenMenuContext.Consumer>
-				{({toggleMenu}) => (
-					<button className="cta-button" onClick={(event) => {
-						event.preventDefault()
-						toggleMenu()
-						runSearch()}}>
-						Search
-					</button>
-				)}
-			</OpenMenuContext.Consumer>
-			{state.runSearch && 
-				<Redirect 
-					to={{
-						pathname: "/search-results",
-						state: { query: makeQuery() }
-					}}
-				/>
-			}
-		</form>
+		<OpenMenuContext.Consumer>
+			{({isOpen, toggleMenu}) => (
+				<form 
+					className="Search enter" 
+					onSubmit={runSearch} 
+					style={{animation: isOpen ? 'enter 1s forwards': 'exit 1s forwards'}
+				}>
+					<h2>Find Applicants</h2>
+					<label htmlFor="skills-options" className="form-label">
+						What <span className="accent-text">skills</span> are you hiring for?
+					</label>
+					<section id="skills-options" className="options">
+						{makeOption(state.skills, "skills")}
+					</section>
+					<label htmlFor="values-options" className="form-label">
+						What are your company <span className="accent-text">values</span>?
+					</label>
+					<section id="values-options" className="options">
+						{makeOption(state.values, "values")}
+					</section>
+
+								<button className="cta-button" onClick={(event) => {
+									event.preventDefault()
+									toggleMenu()
+									// console.log(isOpen)
+									runSearch()}}>
+									Search
+								</button>
+
+					{state.runSearch && 
+						<Redirect 
+						to={{
+							pathname: "/search-results",
+							state: { query: makeQuery() }
+						}}
+						/>
+					}
+				</form>
+			)}
+		</OpenMenuContext.Consumer>
 	)
 }
 
