@@ -15,7 +15,6 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
   useEffect(() => {
     getApplicants()
     	.then(data => {
-        console.log("QUERY CHANGE! FETCH")
         setApplicants(data.data)
       })
   }, [query])
