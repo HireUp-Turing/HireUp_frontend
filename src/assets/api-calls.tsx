@@ -21,3 +21,14 @@ export const getApplicantById = (id: number): Promise<any> => {
 			}
 		})
 }
+
+export const getSearchOptions = (): Promise<any> => {
+	return fetch(`${baseUrl}/search-options`)
+		.then(response => {
+			if (response.ok) {
+				return response.json()
+			} else {
+				throw response
+			}
+		})
+}

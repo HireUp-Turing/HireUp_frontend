@@ -13,6 +13,11 @@
   align-items: flex-start;
 }
 
+.search-error {
+	text-align: justify;
+	font-family: 'Ubuntu', sans-serif;
+}
+
 .enter {
   animation: enter .75s forwards
 }
@@ -60,6 +65,6 @@
 		margin-right: 0em
 	}
 	to {
-		margin-right: -40em
+		margin-right: -50em
 	}
 }

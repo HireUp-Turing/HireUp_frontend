@@ -1,10 +1,9 @@
 import React, { useState, useReducer, useEffect, SyntheticEvent } from 'react'
-import { skillsData, valuesData } from '../../assets/test-values-skills'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './Search.scss'
 import { OpenMenuContext } from '../../contexts'
-import { AttributeList } from '../../assets/definitions'
+import { getSearchOptions } from '../../assets/api-calls'
 
 const initialState = {
 	skills: [],
@@ -24,10 +23,11 @@ const Search: React.FC = () => {
 	const [query, setQuery] = useState({skills: [], values: []})
 
 	useEffect(() => {
-		fakeFetch()
-			.then(options => {
+		getSearchOptions()
+			.then(data => {
+				let options = data.data[0]
 				Object.keys(options).forEach(option => {
-					const checkboxes = options[option as keyof AttributeList].map(attribute => {
+					const checkboxes = options[option].map((attribute: object) => {
 						const checkbox = Object.assign(attribute)
 						checkbox.checked = false
 						return checkbox
@@ -35,14 +35,8 @@ const Search: React.FC = () => {
 					dispatch({type: option, change: checkboxes})
 				})
 			})
+			.catch(error => setError('Something went wrong!'))
 	}, [])
-
-	const fakeFetch = async () => {
-		return await {
-			skills: skillsData,
-			values: valuesData
-		}
-	}
 
 	const updateSelections = (event: SyntheticEvent, type:string, selection: string) => {
 		const change:any = state[type]
@@ -80,7 +74,7 @@ const Search: React.FC = () => {
 	
 	const checkQuery = () => {
 		if (query.skills.length === 0 && query.values.length === 0) {
-			setError('Please select some search options!')
+			setError('Please select at least one search option and try again.')
 		} else {
 			setError('')
 		}
@@ -94,7 +88,6 @@ const Search: React.FC = () => {
 					className="Search" 
 				>
 					<h2>Find Applicants</h2>
-					{error !== '' && <h3>{error}</h3>}
 					<label htmlFor="skills-options" className="form-label">
 						What <span className="accent-text">skills</span> are you hiring for?
 					</label>
@@ -119,6 +112,7 @@ const Search: React.FC = () => {
 					>
 						Search
 					</Link>
+					{error !== '' && <h3 className="search-error">{error}</h3>}
 				</form>
 			)}}
 		</OpenMenuContext.Consumer>
