@@ -41,7 +41,7 @@ const ApplicantForm: React.FC = () => {
 		dispatch({action:username, type:'username'})
 	}, [username])
 
-	const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleFormChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		event.preventDefault()
 		dispatch({
 			action: event.target.value,
@@ -52,7 +52,6 @@ const ApplicantForm: React.FC = () => {
 	useEffect(() => {
 		getSearchOptions()
 		.then(response => {
-			console.log(response)
 			setTags(response.data[0])
 		})
 		makeUserName()
@@ -104,24 +103,42 @@ const makeTags = (tags:Array<{attribute:string, id:number}>) => {
 							}}
 							/>
 						</label></h6>
-						<input id="username" className="applicant-input" placeholder={username} disabled/>
+						<textarea
+							disabled
+							id="username"
+							className="applicant-input"
+							placeholder={username}
+							rows={1}
+						/>
 						<label htmlFor="username" className="privacy-notice">Refresh to find your perfect codename</label>
 						<h6><label htmlFor="bio">Bio</label></h6>
-						<input id="bio" className="applicant-input"
+						<textarea
+							id="bio"
+							className="applicant-input"
 							onChange={handleFormChange}
+							rows={4}
 						/>
 						<p className="privacy-notice">The following information will not be shared with employers:</p>
 						<h6><label htmlFor="first_name">First Name</label></h6>
-						<input id="first_name" className="applicant-input" 
+						<textarea
+							id="first_name"
+							className="applicant-input" 
 							onChange={handleFormChange}
+							rows={1}
 						/>
 						<h6><label htmlFor="last_name">Last Name</label></h6>
-						<input id="last_name" className="applicant-input" 
+						<textarea
+							id="last_name"
+							className="applicant-input" 
 							onChange={handleFormChange}
+							rows={1}
 						/>
 						<h6><label htmlFor="email">Email</label></h6>
-						<input id="email" className="applicant-input" 
+						<textarea
+							id="email"
+							className="applicant-input" 
 							onChange={handleFormChange}
+							rows={1}
 						/>
 					</div>
 				</div>
