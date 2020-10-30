@@ -33,7 +33,7 @@ const Header: React.FC = () => {
 							INBOX
 						</NavLink>
 						<img 
-							src="/search.svg" 
+							src={`/magnifying-${isOpen ? 'pink' : 'gray'}.svg`}
 							alt="search-icon" 
 							className="search-icon"
 							title="search" 
