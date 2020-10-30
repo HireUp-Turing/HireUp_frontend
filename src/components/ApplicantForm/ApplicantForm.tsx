@@ -1,25 +1,24 @@
-import { type } from 'os'
-import React, { useState, useEffect, useReducer, SyntheticEvent } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 
 import { getNames, getSearchOptions } from '../../assets/api-calls'
 import './ApplicantForm.scss'
 
 interface Creator {
-	username?:string
-	bio?:string
-	first_name?:string
-	last_name?:string
-	email?:string
-	skills?:Array<{attribute:string, id:number}>
-	values?:Array<{attribute:string, id:number}>
+	username?: string
+	bio?: string
+	first_name?: string
+	last_name?: string
+	email?: string
+	skills?: Array<{attribute: string, id: number}>
+	values?: Array<{attribute: string, id: number}>
 }
 
 const initialState = {
-	username:'',
-	bio:'',
-	first_name:'',
-	last_name:'',
-	email:'',
+	username: '',
+	bio: '',
+	first_name: '',
+	last_name: '',
+	email: '',
 	skills: [],
 	values: []
 }
@@ -106,12 +105,12 @@ const makeTags = (tags:Array<{attribute:string, id:number}>) => {
 							/>
 						</label></h6>
 						<input id="username" className="applicant-input" placeholder={username} disabled/>
-						<label htmlFor="username">Refresh to find your perfect anonymized codename</label>
+						<label htmlFor="username" className="privacy-notice">Refresh to find your perfect codename</label>
 						<h6><label htmlFor="bio">Bio</label></h6>
 						<input id="bio" className="applicant-input"
 							onChange={handleFormChange}
 						/>
-						<p>The following information will not be shared with employers:</p>
+						<p className="privacy-notice">The following information will not be shared with employers:</p>
 						<h6><label htmlFor="first_name">First Name</label></h6>
 						<input id="first_name" className="applicant-input" 
 							onChange={handleFormChange}
@@ -126,19 +125,19 @@ const makeTags = (tags:Array<{attribute:string, id:number}>) => {
 						/>
 					</div>
 				</div>
-				<div className="applicant-attributes">
+				<div className="applicant-options">
 				<h5>Select your skills and values</h5>
-						<h5>Skills</h5>
-					<div className="attribute-box">
+						<h6>Skills</h6>
+					<div className="option-box">
 						{makeTags(tags.skills)}
 					</div>
-						<h5>Values</h5>
-					<div className="attribute-box">
+						<h6>Values</h6>
+					<div className="option-box">
 						{makeTags(tags.values)}
 					</div>
 				</div>
 			</div>
-				<button className="cta-button">create your profile</button>
+			<button className="cta-button" style={{ margin: '1em auto' }}>create your profile</button>
     </main>
 	)
 }

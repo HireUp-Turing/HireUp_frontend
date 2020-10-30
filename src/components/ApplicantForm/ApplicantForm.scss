@@ -4,16 +4,19 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	align-content: flex-start;
+	text-align: left;
 }
 
 .applicant-profile {
 	width: 34em;
+	margin-right: 2em;
 }
 
 .applicant-input {
 	background: transparent;
 	border: 1px solid $soft-accent;
-	margin: 0em 0;
+	margin: .3em 0 0 0;
 	width: 100%;
 }
 
@@ -22,16 +25,15 @@
 	margin-left: .5em;
 }
 
-.applicant-attributes {
+.applicant-options {
+	display: flex;
 	flex-direction: column;
-	padding-right: 2em;
+	justify-content: space-between;
 	overflow: scroll;
-	padding: 1em;
 }
 
-.attribute-box {
-	border: .13em solid $soft-accent;
-	margin: .5em 0;
+.option-box {
+	border: .1px solid $soft-accent;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -46,3 +48,6 @@
 	}
 }
 
+.privacy-notice {
+	font-size: 14px;
+}
