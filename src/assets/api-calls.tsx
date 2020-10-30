@@ -33,9 +33,32 @@ export const getSearchOptions = (): Promise<any> => {
 		})
 }
 
-export const getNames = (): Promise<any> => {
-	let name
-	return fetch('https://namey.muffinlabs.com/name.json?type=surname&min_freq=90')
+export const getAttributes = (attribute:string): Promise<any> => {
+	return fetch(`${baseUrl}/${attribute}`)
+		.then(response => {
+			if (response.ok) {
+				return response.json()
+			} else {
+				throw response
+			}
+		})	
+}
+
+export const postApplicant = (applicant:any) => {
+	return fetch(`${baseUrl}/applicants`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(applicant)
+	}).then(response => {
+		if (response.ok) console.log('Success!')
+	})
+}
+
+export const getNames = (req?:string): Promise<any> => {
+	let name = req || '?type=surname&min_freq=90'
+	return fetch(`https://namey.muffinlabs.com/name.json${name}`)
 		.then(response => {
 			return response.json()
 		})
