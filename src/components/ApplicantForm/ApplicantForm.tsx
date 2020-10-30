@@ -64,6 +64,29 @@ const ApplicantForm: React.FC = () => {
 		setUsername(name)
 	}
 
+const tagHandler = (event:any) => {
+		// const button<any> = event.target
+		console.log("ID", event.target.id)
+		console.log("value", event.target.name)
+		// if a skill is highlighted/clicked
+		// 
+	}
+
+const makeTags = (tags:Array<{attribute:string, id:number}>) => {
+		return tags.map(tag => {
+			return (
+			<button 
+				className="attribute-tag" 
+				name={tag.attribute} 
+				id={`${tag.id}`} 
+				key={tag.attribute}
+				onClick={tagHandler}>
+					{tag.attribute}
+			</button>
+			)
+		})
+	}
+
 	return (
 		<main>
 			<div className="new-applicant-container">
@@ -107,9 +130,11 @@ const ApplicantForm: React.FC = () => {
 				<h5>Select your skills and values</h5>
 						<h5>Skills</h5>
 					<div className="attribute-box">
+						{makeTags(tags.skills)}
 					</div>
 						<h5>Values</h5>
 					<div className="attribute-box">
+						{makeTags(tags.values)}
 					</div>
 				</div>
 			</div>
