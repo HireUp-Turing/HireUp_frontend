@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react'
+import { Redirect } from 'react-router-dom'
 
-import { getNames, getAttributes } from '../../assets/api-calls'
+import { getNames, getAttributes, postApplicant } from '../../assets/api-calls'
 import { Creator } from '../../assets/definitions'
 import './ApplicantForm.scss'
 
@@ -48,6 +49,7 @@ const reducer = (state:Creator, update:{payload:string | number, type:string}) =
 const ApplicantForm: React.FC = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	const [username, setUsername] = useState<string>('')
+	const [successfulPost, setSuccessfulPost] = useState<number>(0)
 	const [tags, setTags] = useState<{skills:[], values:[]}>({
 		skills:[], values:[]
 	})
@@ -100,6 +102,16 @@ const ApplicantForm: React.FC = () => {
 				</button>
 			)
 		})
+	}
+
+	const createNewApplicant = () => {
+		postApplicant(state)
+			.then(response => {
+				setSuccessfulPost(response.data.id)
+			})
+			.catch(error => {
+				console.log(error)
+			})
 	}
 
 	return (
@@ -172,7 +184,18 @@ const ApplicantForm: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			<button className="cta-button" style={{ margin: '1em auto' }}>create your profile</button>
+			<button
+				className="cta-button"
+				style={{ margin: '1em auto' }}
+				onClick={createNewApplicant}
+			>
+				create your profile
+			</button>
+			{successfulPost &&
+				<Redirect
+					to={`/applicant/${successfulPost}`}
+				/>
+			}
     </main>
 	)
 }
