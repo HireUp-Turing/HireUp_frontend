@@ -11,8 +11,15 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
     const match:any = props.match.params
     getMessages(match.id).then(response => {
       setMessages(response.data)
+      console.log(response.data)
     })
   }, [])
+
+  const displayMessages = () => {
+    return messages.map((message, i) => {
+      <div></div>
+    })
+  }
 
   return (
     <div>hello world</div>
