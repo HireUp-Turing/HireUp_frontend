@@ -4,8 +4,18 @@ import { RouteComponentProps } from 'react-router-dom'
 import { getMessages } from '../../assets/api-calls'
 import './Inbox.scss'
 
+interface Messages {
+  applicant_id: number
+  body: string
+  created_at: string
+  employer_email: string
+  employer_name: string
+  id: number
+  read_status: boolean
+}
+
 const Inbox: React.FC<RouteComponentProps> = (props) => {
-  const [messages, setMessages] = useState('')
+  const [messages, setMessages] = useState<Array<Messages>>([])
 
   useEffect(() => {
     const match:any = props.match.params
@@ -13,16 +23,28 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
       setMessages(response.data)
       console.log(response.data)
     })
-  }, [])
+  }, [props.match.params])
+
+// if read status is false, message is highlighted
+//if read status is true unhighlight
 
   const displayMessages = () => {
     return messages.map((message, i) => {
-      <div></div>
+      return (
+        <div className="message-info">
+          <h3>From: {message.employer_name}</h3>
+          <h3>{message.employer_email}</h3>
+          <h3>{message.body}</h3>
+          <h5>{message.read_status}</h5>
+          <h5>{message.created_at}</h5>
+        </div>
+      )
     })
   }
 
   return (
-    <div>hello world</div>
+    <div className="message-container">{displayMessages()}</div>
+
   )
 }
 
