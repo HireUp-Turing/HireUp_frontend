@@ -72,11 +72,11 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
 					</div>
 				</div>
 				<div className="applicant-attributes">
-					<div className="attribute-box">
+					<div>
 						<h5>Skills</h5>
 						{attributeLists.skillTags}
 					</div>
-					<div className="attribute-box">
+					<div>
 						<h5>Values</h5>
 						{attributeLists.valueTags}
 					</div>

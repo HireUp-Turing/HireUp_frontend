@@ -7,6 +7,7 @@ $text: #333533;
 $accent: #E85D75;
 $soft-accent: #cdcdcd;
 $highlight: #6369D1;
+
 //mixins
 @mixin cta-buttons() {
 	text-decoration: none;
@@ -17,8 +18,8 @@ $highlight: #6369D1;
 	padding: .5em;
 	margin: .5em;
 	border-radius: .8em;
-	// width: min-content;
-	// white-space: nowrap;
+	width: min-content;
+	white-space: nowrap;
 	
 	&:hover {
 		font-style: italic;

@@ -122,6 +122,7 @@ const Search: React.FC = () => {
 							onClick={(event) => {
 								event.preventDefault()
 								updateSearchOptions()
+								setQuery({skills: [], values: []})
 							}}
 						>
 							Clear
