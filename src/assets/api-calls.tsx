@@ -55,3 +55,19 @@ export const getNames = (): Promise<any> => {
 			return name
 		})
 }
+
+export const postApplicant = (applicant: any): Promise<any> => {
+	return fetch(`${baseUrl}/applicants`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(applicant)
+	}).then(response => {
+		if (response.ok) {
+			return response.json()
+		} else {
+			throw response
+		}
+	})
+}
