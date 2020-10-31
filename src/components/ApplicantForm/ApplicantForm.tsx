@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 import { getNames, getAttributes, postApplicant } from '../../assets/api-calls'
 import { Creator } from '../../assets/definitions'
+import { AuthContext } from '../../contexts'
 import './ApplicantForm.scss'
 
 const initialState = {
@@ -194,9 +195,15 @@ const ApplicantForm: React.FC = () => {
 				create your profile
 			</button>
 			{successfulPost &&
-				<Redirect
-					to={{pathname: `/applicant/${newApplicant.id}`, state: newApplicant}}
-				/>
+				<AuthContext.Consumer>
+					{({ setAuth }) => {
+						setAuth(newApplicant.id)
+						return (
+							<Redirect
+							to={{pathname: `/applicant/${newApplicant.id}`, state: newApplicant}}
+							/>
+					)}}
+				</AuthContext.Consumer> 
 			}
     </main>
 	)
