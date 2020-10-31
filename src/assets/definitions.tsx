@@ -37,3 +37,13 @@ export type Query = {
   skills: Array<{attribute:string, checked:boolean}>
   values: Array<{attribute:string, checked:boolean}>
 }
+
+export interface Creator {
+	username?: string
+	bio?: string
+	first_name?: string
+	last_name?: string
+	email?: string
+	skills?: any
+	values?: Array<number>
+}
