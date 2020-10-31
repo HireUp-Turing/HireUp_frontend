@@ -30,7 +30,10 @@ const Applicant: React.FC<RouteComponentProps> = (props) => {
   }, [props.location.state, props.match.params])
 
 const determineMatchedAttribute = (attribute: string, keyword: string, props: any):string => {
-		if (props && props.attributeMatches[keyword][0] && props.attributeMatches[keyword][0].attribute === attribute) {
+    if (props 
+      && props.attributeMatches 
+      && props.attributeMatches[keyword][0] 
+      && props.attributeMatches[keyword][0].attribute === attribute) {
       return 'attribute-tag highlight'
     } else {
       return 'attribute-tag'
