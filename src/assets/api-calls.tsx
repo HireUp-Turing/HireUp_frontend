@@ -33,6 +33,17 @@ export const getSearchOptions = (): Promise<any> => {
 		})
 }
 
+export const getAttributes = (attribute: string): Promise<any> => {
+	return fetch(`${baseUrl}/${attribute}`)
+		.then(response => {
+			if (response.ok) {
+				return response.json()
+			} else {
+				throw response
+			}
+		})
+}
+
 export const getNames = (): Promise<any> => {
 	let name
 	return fetch('https://namey.muffinlabs.com/name.json?type=surname&min_freq=90')
