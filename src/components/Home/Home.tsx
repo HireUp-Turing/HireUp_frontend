@@ -24,7 +24,7 @@ const Home: React.FC = () => {
 									}
 							}}>Find Applicants</button>
 							<Link 
-								to="/" 
+								to="/create-applicant" 
 								onClick={() => {
 									if (isOpen) {
 										toggleMenu()
