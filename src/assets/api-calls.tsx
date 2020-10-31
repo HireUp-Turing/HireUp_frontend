@@ -60,6 +60,17 @@ export const postApplicant = (applicant: any): Promise<any> => {
 	})
 }
 
+export const getMessages = (id:number): Promise<any> => {
+	return fetch(`${baseUrl}/messages?applicant_id=${id}`)
+		.then(response => {
+			if (response.ok) {
+				return response.json()				
+			} else {
+				throw response
+			}
+		})
+}
+
 export const getNames = (req?:string): Promise<any> => {
 	let name = req || '?type=surname&min_freq=90'
 	return fetch(`https://namey.muffinlabs.com/name.json${name}`)
@@ -71,3 +82,4 @@ export const getNames = (req?:string): Promise<any> => {
 			return name
 		})
 }
+
