@@ -44,7 +44,7 @@ export const getAttributes = (attribute:string): Promise<any> => {
 		})	
 }
 
-export const postApplicant = (applicant:any) => {
+export const postApplicant = (applicant: any): Promise<any> => {
 	return fetch(`${baseUrl}/applicants`, {
 		method: "POST",
 		headers: {
@@ -52,7 +52,11 @@ export const postApplicant = (applicant:any) => {
 		},
 		body: JSON.stringify(applicant)
 	}).then(response => {
-		if (response.ok) console.log('Success!')
+		if (response.ok) {
+			return response.json()
+		} else {
+			throw response
+		}
 	})
 }
 
