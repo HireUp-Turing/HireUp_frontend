@@ -1,18 +1,27 @@
+@import '../../_variables.scss';
+
 .message-container {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: ;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  // width: 60%;
-  margin-top: 10em;
   border: 1px solid magenta;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 10em;
-  padding-right: 10em;
+  padding: 10em 15em 1em 15em;
 }
 
 .message-info {
-  border: 1px solid blueviolet;
+  border: 1px solid $accent;
+}
+
+.message-info, .read {
+  border-radius: 4em;
   padding: 1em;
+  margin: 2em 0 2em 0;
+}
+
+.read > *{ 
+  color: $soft-accent;
+}
+
+.read {
+    border: 1px solid $soft-accent;
 }

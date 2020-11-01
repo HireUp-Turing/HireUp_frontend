@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, SyntheticEvent } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import { getMessages } from '../../assets/api-calls'
@@ -25,26 +25,36 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
     })
   }, [props.match.params])
 
-// if read status is false, message is highlighted
-//if read status is true unhighlight
-
   const displayMessages = () => {
     return messages.map((message, i) => {
       return (
-        <div className="message-info">
-          <h3>From: {message.employer_name}</h3>
+        <div className={message.read_status ? "read" : "message-info"}
+          onClick={(event) => {
+            markRead(event, message.id)
+          }}>
+          <h2>From: {message.employer_name}</h2>
           <h3>{message.employer_email}</h3>
           <h3>{message.body}</h3>
-          <h5>{message.read_status}</h5>
-          <h5>{message.created_at}</h5>
+          <h5>{message.created_at.substring(0, 11)}</h5>
         </div>
       )
     })
   }
 
-  return (
-    <div className="message-container">{displayMessages()}</div>
+  const markRead = (event:any, messageId:number) => {
+    setMessages(messages.map(message => {
+      if (message.id === messageId) {
+        message.read_status = true;
+      }
+    return message
+    })
+    )
+  }
 
+  return (
+    <div className="message-container">    
+      {displayMessages()}
+    </div>
   )
 }
 
