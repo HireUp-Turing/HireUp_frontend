@@ -1,3 +1,4 @@
+import { EmployerMessage } from './definitions'
 const baseUrl = 'https://hireup-be.herokuapp.com/api/v1'
 
 export const getApplicants = (): Promise<any> => {
@@ -69,6 +70,21 @@ export const getMessages = (id:number): Promise<any> => {
 				throw response
 			}
 		})
+}
+
+export const sendMessage = (id:number, message:EmployerMessage): Promise<any> => {
+	return fetch(`${baseUrl}/messages`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			...message,
+			applicant_id: id
+		})
+	}).then(response => {
+		return response
+	})
 }
 
 export const getNames = (req?:string): Promise<any> => {

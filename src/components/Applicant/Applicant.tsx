@@ -108,7 +108,7 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
 				</div>
 			</span>
       {messageForm && 
-        <MessageForm />
+        <MessageForm {...props}/>
       }
     </main>
   )

@@ -1,9 +1,11 @@
 import React, { useState, ChangeEvent } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
 import { EmployerMessage } from '../../assets/definitions'
+import { sendMessage } from '../../assets/api-calls'
 import './MessageForm.scss'
 
-const MessageForm: React.FC = () => {
+const MessageForm: React.FC<RouteComponentProps> = (props) => {
   const [message, setMessage] = useState<EmployerMessage>({employer_name: '', employer_email: '', body: ''})
   const [error, setError] = useState('')
 
@@ -16,7 +18,8 @@ const MessageForm: React.FC = () => {
     if (Object.keys(message).every((property:string) => {
       return message[property as keyof EmployerMessage] !== ''
       })) {
-      console.log("ok I'll post that")
+      const params:any = props.match.params
+      sendMessage(params.id, message)
     } else {
       setError('Please fill out every field above before sending')
     }
