@@ -46,9 +46,7 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
 	
   return (
     <main className="search-results">
-      {/* <div className="results-container"> */}
-        {applicantList}
-      {/* </div> */}
+    	{applicantList}
     </main>
   )
 }
