@@ -27,7 +27,7 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
   }, [props.match.params])
 
   const displayMessages = () => {
-    return messages.map((message, i) => {
+    const inbox = messages.map((message, i) => {
       return (
         <div className={message.read_status ? "read" : "message-info"}
           onClick={(event) => {
@@ -40,6 +40,7 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
         </div>
       )
     })
+    return inbox.length > 0 ? inbox : <h3>You don't have any messages yet!</h3> 
   }
 
   const markRead = (event:any, messageId:number) => {
