@@ -1,0 +1,27 @@
+@import '../../_variables.scss';
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid magenta;
+  padding: 10em 15em 1em 15em;
+}
+
+.message-info {
+  border: 1px solid $accent;
+}
+
+.message-info, .read {
+  border-radius: 4em;
+  padding: 1em;
+  margin: 2em 0 2em 0;
+}
+
+.read > *{ 
+  color: $soft-accent;
+}
+
+.read {
+    border: 1px solid $soft-accent;
+}
