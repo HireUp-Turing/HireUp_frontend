@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { ApplicantCard, Query } from '../../assets/definitions'
 import './ApplicantPreview.scss'
 
-const ApplicantPreview: React.FC<ApplicantCard> = (props) => {
-  
+const ApplicantPreview: React.FC<ApplicantCard> = (props) => {  
   const findProfileMatches = (keyword: string) => {
     const { skills, values }:any = props
     const container = keyword === 'skills' ? skills : values
