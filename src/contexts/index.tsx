@@ -9,5 +9,6 @@ export const OpenMenuContext = React.createContext<OpenMenuType>({
 })
 
 export const AuthContext = React.createContext<AuthContextType>({
+	auth: undefined,
 	setAuth: () => {}
 })

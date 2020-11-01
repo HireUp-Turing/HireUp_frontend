@@ -34,6 +34,7 @@ export type OpenMenuType = {
 }
 
 export type AuthContextType = {
+	auth: number | undefined
 	setAuth: (value: number | undefined) => void
 }
 

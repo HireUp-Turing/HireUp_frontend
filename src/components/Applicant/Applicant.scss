@@ -22,6 +22,15 @@
 	animation: rubberBand 1s;
 }
 
+.message-icon {
+  width: 2.5em;
+  cursor: pointer;
+}
+
+.profile-top-line {
+  display: flex
+}
+
 @keyframes rubberBand {
   from {
     transform: scale3d(1, 1, 1);
