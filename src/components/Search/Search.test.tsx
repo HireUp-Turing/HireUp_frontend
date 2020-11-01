@@ -1,6 +1,6 @@
 import React from 'react'
 import Search from './Search'
-import { render, screen } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import { mocked } from 'ts-jest/utils'
 import { MemoryRouter } from 'react-router-dom'
 import { getSearchOptions } from '../../assets/api-calls'
@@ -75,9 +75,13 @@ describe('Search Component', () => {
 		const skill1 = await findByText(/flask/i)
 		const skill2 = await findByText(/rails/i)
 		const skill3 = await findByText(/ruby/i)
+		const value1 = await findByText(/creativity/i)
+		const value2 = await findByText(/mentorship/i)
 		expect(skill1).toBeInTheDocument()
 		expect(skill2).toBeInTheDocument()
 		expect(skill3).toBeInTheDocument()
+		expect(value1).toBeInTheDocument()
+		expect(value2).toBeInTheDocument()
 	})
 
 	// it('Should fire the correct method when search button clicked', () => {
@@ -87,18 +91,23 @@ describe('Search Component', () => {
 	// 	// see that getSearchOptions (the async) was called 1 time
 	// })
 
-	// it('Should clear the form when clear button clicked', () => {
-	// 	render(<MemoryRouter><Search /></MemoryRouter>)
-	// 	const clearButton = screen.getByRole('button', { name: /clear/i })
-	// 	// need to render some fake options
-	// 	// find one of them (getByText???)
-	// 	// click it
-	// 	// see that state updated with it?
-	// 	// when clear button clicked, see that state is empty?
-	// 	const option1 = screen.getByRole('button', { name: /buttonname/i})
-	// 	fireEvent.click(option1)
-	// 	fireEvent.click(clearButton)
-	// 	expect(clearButton).toBeInTheDocument()
-	// })
+	it('Should show error message if no options are selected upon search', async () => {
+		mocked(getSearchOptions).mockImplementation(() =>
+			Promise.resolve(mockedSearchOptions)
+		)
+		const { findByRole, findByText } = render(<MemoryRouter><Search /></MemoryRouter>)
+		const searchButton = await findByRole('link', { name: /search/i })
+		
+		// with no options selected
+		fireEvent.click(searchButton)
+		const error = await findByText(/please select at least one search option/i)
+		expect(error).toBeInTheDocument()
+		
+		// after selecting an option
+		const skill1 = await findByText(/flask/i)
+		fireEvent.click(skill1)
+		fireEvent.click(searchButton)
+		expect(error).not.toBeInTheDocument()
+	})
 
 })
