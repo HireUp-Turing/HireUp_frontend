@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
 import { ApplicantProfile } from '../../assets/definitions'
+import  MessageForm from '../MessageForm/MessageForm'
 import { getApplicantById } from '../../assets/api-calls'
 import { RouteComponentProps } from 'react-router-dom'
 import './Applicant.scss'
+import { AuthContext, MessageFormContext } from '../../contexts'
 
 const Applicant: React.FC<RouteComponentProps> = (props) => {
   const [applicant, setApplicant] = useState<ApplicantProfile>({username: '', bio: '', skills: [], values: []})
+  const [messageForm, showMessageForm] = useState<boolean>(false)
 
   const buildApplicant = (info:any) => {
     setApplicant({
@@ -68,9 +71,28 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
 						className="applicant-icon"
 						src={`https://avatars.dicebear.com/api/bottts/${applicant.username}.svg`} 
 						alt={`${applicant.username}'s icon`}
-					/>
+            />
 					<div className="applicant-info">
-						<h2 className="username">{applicant.username}</h2> 
+            <div className="profile-top-line">
+              <h2 className="username">{applicant.username}</h2> 
+              <AuthContext.Consumer>
+                {({ auth }) => {
+                  const match:any = props.match.params
+                  if (auth !== parseInt(match.id)) {
+                  return (
+                    <img 
+                      src={`/chat-${messageForm ? 'pink': 'gray'}.svg`}
+                      alt='message icon' 
+                      className="message-icon" 
+                      title='send this user a message' 
+                      onClick={() => {
+                        showMessageForm(!messageForm)
+                      }}
+                    />
+                  )}
+                }}
+              </AuthContext.Consumer>
+            </div>
 						<p>{applicant.bio}</p>  
 					</div>
 				</div>
@@ -85,6 +107,11 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
 					</div>
 				</div>
 			</span>
+      {messageForm && 
+        <MessageFormContext.Provider value={{ messageForm, showMessageForm }}>
+          <MessageForm {...props}/>
+        </MessageFormContext.Provider>
+      }
     </main>
   )
 }

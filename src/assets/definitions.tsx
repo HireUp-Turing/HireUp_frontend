@@ -6,7 +6,7 @@ export interface ApplicantProfile {
 	username:string,
 	bio:string,
 	skills:Array<string>,
-	values:Array<string>
+	values:Array<string> 
 }
 
 export interface SearchResponse {
@@ -34,7 +34,13 @@ export type OpenMenuType = {
 }
 
 export type AuthContextType = {
+	auth: number | undefined
 	setAuth: (value: number | undefined) => void
+}
+
+export type MessageFormContextType = {
+	messageForm: boolean
+	showMessageForm: (value: boolean) => void
 }
 
 export type Query = {
@@ -51,4 +57,10 @@ export interface Creator {
 	skills?: any
 	values?: Array<number>
 	id?: number
+}
+
+export interface EmployerMessage {
+	employer_name: string
+	employer_email: string
+	body: string
 }
