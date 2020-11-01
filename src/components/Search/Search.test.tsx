@@ -110,4 +110,25 @@ describe('Search Component', () => {
 		expect(error).not.toBeInTheDocument()
 	})
 
+	it('Should clear selected options when clear button clicked', async () => {
+		mocked(getSearchOptions).mockImplementation(() =>
+			Promise.resolve(mockedSearchOptions)
+		)
+		const { findByRole, findByText, queryByText } = render(<MemoryRouter><Search /></MemoryRouter>)
+		
+		// select an option and search button will not throw error
+		const skill1 = await findByText(/flask/i)
+		const searchButton = await findByRole('link', { name: /search/i })
+		fireEvent.click(skill1)
+		fireEvent.click(searchButton)
+		const error = await queryByText(/please select at least one search option/i)
+		expect(error).not.toBeInTheDocument()
+		
+		// clear options and run search, error message will show
+		const clearButton = await findByRole('button', { name: /clear/i })
+		fireEvent.click(clearButton)
+		fireEvent.click(searchButton)
+		expect(await findByText(/please select at least one search option/i)).toBeInTheDocument()
+	})
+
 })
