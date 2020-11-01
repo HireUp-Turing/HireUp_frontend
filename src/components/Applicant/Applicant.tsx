@@ -5,7 +5,7 @@ import  MessageForm from '../MessageForm/MessageForm'
 import { getApplicantById } from '../../assets/api-calls'
 import { RouteComponentProps } from 'react-router-dom'
 import './Applicant.scss'
-import { AuthContext } from '../../contexts'
+import { AuthContext, MessageFormContext } from '../../contexts'
 
 const Applicant: React.FC<RouteComponentProps> = (props) => {
   const [applicant, setApplicant] = useState<ApplicantProfile>({username: '', bio: '', skills: [], values: []})
@@ -78,7 +78,7 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
               <AuthContext.Consumer>
                 {({ auth }) => {
                   const match:any = props.match.params
-                  if (auth !== match.id) {
+                  if (auth !== parseInt(match.id)) {
                   return (
                     <img 
                       src={`/chat-${messageForm ? 'pink': 'gray'}.svg`}
@@ -108,7 +108,9 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
 				</div>
 			</span>
       {messageForm && 
-        <MessageForm {...props}/>
+        <MessageFormContext.Provider value={{ messageForm, showMessageForm }}>
+          <MessageForm {...props}/>
+        </MessageFormContext.Provider>
       }
     </main>
   )
