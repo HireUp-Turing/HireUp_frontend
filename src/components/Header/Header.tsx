@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
 						}
 						<img 
 							src={`/magnifying-${isOpen ? 'pink' : 'gray'}.svg`}
-							alt="search-icon" 
+							alt="search icon" 
 							className="search-icon"
 							title="search" 
 							onClick={() => {

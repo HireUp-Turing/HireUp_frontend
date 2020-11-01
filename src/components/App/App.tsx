@@ -11,6 +11,7 @@ const App: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [isHidden, setIsHidden] = useState<boolean>(true)
 	const [auth, setAuth] = useState<number | undefined>(undefined)
+	
   return (
 		<div className="page-wrap">
 			<div className="App">

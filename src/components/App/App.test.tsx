@@ -1,9 +1,12 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from 'react'
+import App from './App'
+import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+it('Should render a header with title and search icon', () => {
+	render(<MemoryRouter><App /></MemoryRouter>)
+	const title = screen.getByRole('link', { name: /hire up/i })
+	const searchIcon = screen.getByAltText(/search icon/i)
+	expect(title).toBeInTheDocument()
+	expect(searchIcon).toBeInTheDocument()
+})

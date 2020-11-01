@@ -16,6 +16,7 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
+    "ts-jest": "^26.4.3",
     "typescript": "^3.7.5"
   },
   "scripts": {
@@ -38,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6"
   }
 }
