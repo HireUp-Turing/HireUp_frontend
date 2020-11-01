@@ -1,7 +1,8 @@
 import React, { useEffect, useState, SyntheticEvent } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Redirect } from 'react-router-dom'
 
 import { getMessages } from '../../assets/api-calls'
+import { AuthContext } from '../../contexts'
 import './Inbox.scss'
 
 interface Messages {
@@ -26,7 +27,7 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
   }, [props.match.params])
 
   const displayMessages = () => {
-    return messages.map((message, i) => {
+    const inbox = messages.map((message, i) => {
       return (
         <div className={message.read_status ? "read" : "message-info"}
           onClick={(event) => {
@@ -39,6 +40,7 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
         </div>
       )
     })
+    return inbox.length > 0 ? inbox : <h3>You don't have any messages yet!</h3> 
   }
 
   const markRead = (event:any, messageId:number) => {
@@ -52,9 +54,22 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
   }
 
   return (
-    <div className="message-container">    
-      {displayMessages()}
-    </div>
+    <AuthContext.Consumer>
+     {({ auth }) => {
+       const match:any = props.match.params
+       if(auth !== parseInt(match.id)) {
+        return (
+          <Redirect to={`/applicant/${match.id}`} />
+        )} else {
+          return (
+            <div className="message-container">    
+              {displayMessages()}
+            </div>
+          )
+        }
+       }
+     } 
+    </AuthContext.Consumer>
   )
 }
 

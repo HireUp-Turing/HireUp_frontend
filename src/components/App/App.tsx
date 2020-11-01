@@ -15,7 +15,7 @@ const App: React.FC = () => {
   return (
 		<div className="page-wrap">
 			<div className="App">
-				<AuthContext.Provider value={{setAuth}}>
+				<AuthContext.Provider value={{auth, setAuth}}>
 				<OpenMenuContext.Provider value={{
 					isOpen,
 					setIsHidden,

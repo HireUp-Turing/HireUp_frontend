@@ -13,12 +13,23 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
   let query: unknown | any = props.location.state
 
   useEffect(() => {
+    const filterMatches = (data:SearchResponse) => {
+      const attributes = [...data.skills, ...data.values]
+      const request = [...query.query.skills, ...query.query.values]
+      return attributes.filter(attribute => request.some(tag => tag.attribute === attribute))
+    } 
+
     getApplicants()
-    	.then(data => {
-        setApplicants(data.data)
-      })
-  }, [query])
+    	.then(data => {   
+        const results = data.data.sort((a:SearchResponse, b:SearchResponse) => {
+          console.log(filterMatches(b).length - filterMatches(a).length)
+          return filterMatches(b).length - filterMatches(a).length
+        })
+        setApplicants(results)
+      }) 
+    }, [query])
   
+
   let applicantList = applicants.map((user, i) => {
     return ( 
       <ApplicantPreview 
