@@ -1,7 +1,8 @@
 import React, { useEffect, useState, SyntheticEvent } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Redirect } from 'react-router-dom'
 
 import { getMessages } from '../../assets/api-calls'
+import { AuthContext } from '../../contexts'
 import './Inbox.scss'
 
 interface Messages {
@@ -52,9 +53,22 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
   }
 
   return (
-    <div className="message-container">    
-      {displayMessages()}
-    </div>
+    <AuthContext.Consumer>
+     {({ auth }) => {
+       const match:any = props.match.params
+       if(auth !== parseInt(match.id)) {
+        return (
+          <Redirect to={`/applicant/${match.id}`} />
+        )} else {
+          return (
+            <div className="message-container">    
+              {displayMessages()}
+            </div>
+          )
+        }
+       }
+     } 
+    </AuthContext.Consumer>
   )
 }
 
