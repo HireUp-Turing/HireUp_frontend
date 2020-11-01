@@ -15,11 +15,11 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
     })
   }, [])
 
-  const displayMessages = () => {
-    return messages.map((message, i) => {
-      <div></div>
-    })
-  }
+  // const displayMessages = () => {
+  //   return messages.map((message, i) => {
+  //     <div></div>
+  //   })
+  // }
 
   return (
     <div>hello world</div>
