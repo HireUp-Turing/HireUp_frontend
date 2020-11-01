@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 import { getNames, getAttributes, postApplicant } from '../../assets/api-calls'
 import { Creator } from '../../assets/definitions'
+import { AuthContext } from '../../contexts'
 import './ApplicantForm.scss'
 
 const initialState = {
@@ -49,7 +50,8 @@ const reducer = (state:Creator, update:{payload:string | number, type:string}) =
 const ApplicantForm: React.FC = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	const [username, setUsername] = useState<string>('')
-	const [successfulPost, setSuccessfulPost] = useState<number>(0)
+	const [successfulPost, setSuccessfulPost] = useState<boolean>(false)
+	const [newApplicant, setNewApplicant] = useState<Creator>({})
 	const [tags, setTags] = useState<{skills:[], values:[]}>({
 		skills:[], values:[]
 	})
@@ -107,7 +109,8 @@ const ApplicantForm: React.FC = () => {
 	const createNewApplicant = () => {
 		postApplicant(state)
 			.then(response => {
-				setSuccessfulPost(response.data.id)
+				setNewApplicant(response.data)
+				setSuccessfulPost(true)
 			})
 			.catch(error => {
 				console.log(error)
@@ -192,9 +195,15 @@ const ApplicantForm: React.FC = () => {
 				create your profile
 			</button>
 			{successfulPost &&
-				<Redirect
-					to={`/applicant/${successfulPost}`}
-				/>
+				<AuthContext.Consumer>
+					{({ setAuth }) => {
+						setAuth(newApplicant.id)
+						return (
+							<Redirect
+							to={{pathname: `/applicant/${newApplicant.id}`, state: newApplicant}}
+							/>
+					)}}
+				</AuthContext.Consumer> 
 			}
     </main>
 	)

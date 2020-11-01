@@ -29,8 +29,14 @@
 			font-style: italic;
 		}
 		.search-icon {
-			margin: 0 2em;
+			margin: 1em 2em;
 			width: 3em;
 		}
 	}
+}
+
+.header-bump {
+	background-color:green;
+	height: 5em;
+	width: 100%;
 }

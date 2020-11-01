@@ -33,7 +33,7 @@ export const getSearchOptions = (): Promise<any> => {
 		})
 }
 
-export const getAttributes = (attribute: string): Promise<any> => {
+export const getAttributes = (attribute:string): Promise<any> => {
 	return fetch(`${baseUrl}/${attribute}`)
 		.then(response => {
 			if (response.ok) {
@@ -41,19 +41,7 @@ export const getAttributes = (attribute: string): Promise<any> => {
 			} else {
 				throw response
 			}
-		})
-}
-
-export const getNames = (): Promise<any> => {
-	let name
-	return fetch('https://namey.muffinlabs.com/name.json?type=surname&min_freq=90')
-		.then(response => {
-			return response.json()
-		})
-		.then(data => {
-			name = data[0]
-			return name
-		})
+		})	
 }
 
 export const postApplicant = (applicant: any): Promise<any> => {
@@ -71,3 +59,27 @@ export const postApplicant = (applicant: any): Promise<any> => {
 		}
 	})
 }
+
+export const getMessages = (id:number): Promise<any> => {
+	return fetch(`${baseUrl}/messages?applicant_id=${id}`)
+		.then(response => {
+			if (response.ok) {
+				return response.json()				
+			} else {
+				throw response
+			}
+		})
+}
+
+export const getNames = (req?:string): Promise<any> => {
+	let name = req || '?type=surname&min_freq=90'
+	return fetch(`https://namey.muffinlabs.com/name.json${name}`)
+		.then(response => {
+			return response.json()
+		})
+		.then(data => {
+			name = data[0]
+			return name
+		})
+}
+

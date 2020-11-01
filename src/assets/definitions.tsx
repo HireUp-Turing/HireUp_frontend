@@ -33,6 +33,10 @@ export type OpenMenuType = {
   toggleMenu: () => void
 }
 
+export type AuthContextType = {
+	setAuth: (value: number | undefined) => void
+}
+
 export type Query = {
   skills: Array<{attribute:string, checked:boolean}>
   values: Array<{attribute:string, checked:boolean}>
