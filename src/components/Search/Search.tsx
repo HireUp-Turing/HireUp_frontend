@@ -85,53 +85,48 @@ const Search: React.FC = () => {
 	}
 
 	return (
-		<OpenMenuContext.Consumer>
-			{({toggleMenu}) => {
-				return (
-				<form 
-					className="Search" 
+		<form 
+			className="Search" 
+		>
+			<h2>Find Applicants</h2>
+			<label htmlFor="skills-options" className="form-label">
+				What <span className="accent-text">skills</span> are you hiring for?
+			</label>
+			<section id="skills-options" className="options">
+				{makeOption(state.skills, "skills")}
+			</section>
+			<label htmlFor="values-options" className="form-label">
+				What are your company <span className="accent-text">values</span>?
+			</label>
+			<section id="values-options" className="options">
+				{makeOption(state.values, "values")}
+			</section>
+			<div>
+				<Link
+					to={{
+						pathname: "/search-results",
+						state: { query: query }
+					}}
+					className="cta-button" 
+					onClick={() => {
+						checkQuery()
+					}}
 				>
-					<h2>Find Applicants</h2>
-					<label htmlFor="skills-options" className="form-label">
-						What <span className="accent-text">skills</span> are you hiring for?
-					</label>
-					<section id="skills-options" className="options">
-						{makeOption(state.skills, "skills")}
-					</section>
-					<label htmlFor="values-options" className="form-label">
-						What are your company <span className="accent-text">values</span>?
-					</label>
-					<section id="values-options" className="options">
-						{makeOption(state.values, "values")}
-					</section>
-					<div>
-						<Link
-							to={{
-								pathname: "/search-results",
-								state: { query: query }
-							}}
-							className="cta-button" 
-							onClick={() => {
-								checkQuery()
-							}}
-						>
-							Search
-						</Link>
-						<button
-							className="cta-button"
-							onClick={(event) => {
-								event.preventDefault()
-								updateSearchOptions()
-								setQuery({skills: [], values: []})
-							}}
-						>
-							Clear
-						</button>
-					</div>
-					{error !== "" && <h3 className="search-error">{error}</h3>}
-				</form>
-			)}}
-		</OpenMenuContext.Consumer>
+					Search
+				</Link>
+				<button
+					className="cta-button"
+					onClick={(event) => {
+						event.preventDefault()
+						updateSearchOptions()
+						setQuery({skills: [], values: []})
+					}}
+				>
+					Clear
+				</button>
+			</div>
+			{error !== "" && <h3 className="search-error">{error}</h3>}
+		</form>
 	)
 }
 
