@@ -43,26 +43,26 @@ describe('Search Component', () => {
 		}
 	})
 
-	it('Should display a title and two prompts', () => {
+	it('Should display a title and two prompts', async () => {
 		mocked(getSearchOptions).mockImplementation(() =>
 			Promise.resolve(mockedSearchOptions)
 		)
-		render(<MemoryRouter><Search /></MemoryRouter>)
-		const title = screen.getByRole('heading', { name: /find applicants/i })
-		const prompt1 = screen.getByText(/skills/i)
-		const prompt2 = screen.getByText(/values/i)
+		const { findByRole, findByText } = render(<MemoryRouter><Search /></MemoryRouter>)
+		const title = await findByRole('heading', { name: /find applicants/i })
+		const prompt1 = await findByText(/skills/i)
+		const prompt2 = await findByText(/values/i)
 		expect(title).toBeInTheDocument()
 		expect(prompt1).toBeInTheDocument()
 		expect(prompt2).toBeInTheDocument()
 	})
 
-	it('Should display two buttons', () => {
+	it('Should display two buttons', async () => {
 		mocked(getSearchOptions).mockImplementation(() =>
 			Promise.resolve(mockedSearchOptions)
 		)
-		render(<MemoryRouter><Search /></MemoryRouter>)
-		const searchButton = screen.getByRole('link', { name: /search/i })
-		const clearButton = screen.getByRole('button', { name: /clear/i })
+		const { findByRole } = render(<MemoryRouter><Search /></MemoryRouter>)
+		const searchButton = await findByRole('link', { name: /search/i })
+		const clearButton = await findByRole('button', { name: /clear/i })
 		expect(searchButton).toBeInTheDocument()
 		expect(clearButton).toBeInTheDocument()
 	})
