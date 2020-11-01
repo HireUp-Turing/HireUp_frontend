@@ -53,3 +53,9 @@ export interface Creator {
 	values?: Array<number>
 	id?: number
 }
+
+export interface EmployerMessage {
+	employer_name: string
+	employer_email: string
+	body: string
+}

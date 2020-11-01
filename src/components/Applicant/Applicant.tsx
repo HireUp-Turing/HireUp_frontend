@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { ApplicantProfile } from '../../assets/definitions'
+import  MessageForm from '../MessageForm/MessageForm'
 import { getApplicantById } from '../../assets/api-calls'
 import { RouteComponentProps } from 'react-router-dom'
 import './Applicant.scss'
@@ -106,6 +107,9 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
 					</div>
 				</div>
 			</span>
+      {messageForm && 
+        <MessageForm />
+      }
     </main>
   )
 }

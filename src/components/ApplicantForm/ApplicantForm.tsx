@@ -195,15 +195,15 @@ const ApplicantForm: React.FC = () => {
 				create your profile
 			</button>
 			{successfulPost &&
-				<AuthContext.Consumer>
-					{({ setAuth }) => {
-						setAuth(newApplicant.id)
-						return (
-							<Redirect
-							to={{pathname: `/applicant/${newApplicant.id}`, state: newApplicant}}
-							/>
-					)}}
-				</AuthContext.Consumer> 
+					<AuthContext.Consumer>
+						{({ setAuth }) => {
+							setAuth(newApplicant.id)
+							return (
+								<Redirect
+								to={{pathname: `/applicant/${newApplicant.id}`, state: newApplicant}}
+								/>
+								)}}
+					</AuthContext.Consumer> 
 			}
     </main>
 	)
