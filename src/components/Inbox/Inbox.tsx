@@ -1,4 +1,4 @@
-import React, { useEffect, useState, SyntheticEvent } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RouteComponentProps, Redirect } from 'react-router-dom'
 
 import { getMessages } from '../../assets/api-calls'
