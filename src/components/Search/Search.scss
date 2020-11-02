@@ -29,14 +29,11 @@
 .options {
   border: .13em solid $soft-accent;
   margin: .5em 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
   overflow: scroll;
   height: 17em;
   width: 23em;
-  padding: 1em;
+  padding: .5em;
+  white-space: nowrap;
 
   > * {
     border: 1px solid $soft-accent;;

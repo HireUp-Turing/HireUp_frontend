@@ -34,20 +34,15 @@
 	flex-direction: column;
 	justify-content: space-between;
 	overflow: scroll;
-	width: 50em;
+	width: 30em;
 }
 
 .option-box {
 	border: .1px solid $soft-accent;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	flex-wrap: wrap;
 	overflow: scroll;
 	height: 9em;
 	width: 100%;
-	// display: grid;
-	// grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+	white-space: nowrap;
 
 	> * {
 		border: 1px solid $soft-accent;

@@ -97,14 +97,13 @@ const ApplicantForm: React.FC = () => {
 					name={tag.attribute}
 					id={`${tag.id}`}
 					key={i}
-					// style={{gridRow: `${}`}}
 					onClick={() => {
 						dispatch({payload: tag.id, type: type})
 					}}>
 						{tag.attribute}
 				</button>
-				{/* {i % Math.floor(tags.length / 5) === 0 &&
-					<br />} */}
+				{(i !== 0 && i % Math.ceil(tags.length / 5) === 0) &&
+					<br />}
 				</>
 		)
 		)}
