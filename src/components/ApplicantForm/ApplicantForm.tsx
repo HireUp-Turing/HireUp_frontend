@@ -118,7 +118,7 @@ const ApplicantForm: React.FC = () => {
 	}
 
 	return (
-		<main>
+		<main className="ApplicantForm">
 			<div className="new-applicant-container">
 				<div className="applicant-profile">
 					<img 
