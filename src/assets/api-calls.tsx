@@ -16,11 +16,18 @@ export const getApplicants = (): Promise<any> => {
 export const search = 
 	(query: {skills:Array<number>, values: Array<number>}):Promise<any> => {
 		return fetch(`${baseUrl}/applicants/search`, {
-			method: 'GET', 
+			method: 'POST', 
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(query)
+		})
+		.then(response => {
+			if (response.ok) {
+				return response.json()
+			} else {
+				throw response
+			}
 		})
 	}
 
