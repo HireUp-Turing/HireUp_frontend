@@ -89,22 +89,25 @@ const ApplicantForm: React.FC = () => {
 	}) 
 
 	const makeTags = (tags:Array<{attribute:string, id:number}>, type:string) => {
-		return tags.map((tag, i) => {
-			return (
+		return tags.map((tag, i) =>  (
+				<>
 				<button
 					className={`attribute-tag ${state[type as keyof Creator]
 						.includes(tag.id) ? "highlight" : ""}`}
 					name={tag.attribute}
 					id={`${tag.id}`}
 					key={i}
+					// style={{gridRow: `${}`}}
 					onClick={() => {
 						dispatch({payload: tag.id, type: type})
 					}}>
 						{tag.attribute}
 				</button>
-			)
-		})
-	}
+				{/* {i % Math.floor(tags.length / 5) === 0 &&
+					<br />} */}
+				</>
+		)
+		)}
 
 	const createNewApplicant = () => {
 		postApplicant(state)
