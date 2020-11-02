@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- node
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: bEJxhuT1KobScFyVaCszQO0omXN2h6XUcWn61DmKaewgq/tzEjdcJLDGPMYt+uAz8i53MmEVupgCjirEYWj1aszoXTya6CGSUQqAUzD1N2jj37gDq8aCsJmaOFbZV+E7SZwDXlZxpdUfpu1FbzwQN101Nl8PyndzP2+5sSzm0gjUIAfeY8NHm+rO7aDhGG5rPgITB794Z7XycxVZ8k6J5AEjmU5FVrqw4ecy7S/di+WYlGoCIo5n2SokAY+BDmHC0kbKZOlDYkDGbmQAKJJXquNy98gcDIFRHlmKOS+HzWCK4YqJy7uN6DaLy5uSn7xqYJnTdLWQTopCDmNyiVSxK0rKQSZecLVsSNvrhi4A3zH5cELeUm57Q4KD+PWC/b/1QBvE2OIl3nvW4f1B9w+cZpqpy1RQ+eeWOpAwSbUpqgt9ZHOLtM34c/SshGtRYMzQMUrhWUgFgnMtIIuhyzgl55oVcHBETLvctZYlryJcOtEnbXBLkANoHJdqkGcF7OBsDhBb2DZuVj3TSI8j3gcWj3IcFSJw1t4OgHj/lMrfRnvJq0hRIdbz1eM2kn6Im0S0CHyeGhU6VuUhOmP+VBUzTkbxBPH8F4S5UoaCiMdbdJXlXkG3pjvYWLnoOMCZtdbwO4/8Ta01ERZutnJ0zyCipIV61xLPee2zTHbuh+u4/e4=
+  app: hire-up
+  skip_cleanup: true
