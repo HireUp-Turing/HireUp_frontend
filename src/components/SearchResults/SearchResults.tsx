@@ -19,18 +19,16 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
     } 
 
     const queryIds = {
-      "skills": query.skills.map((skill:any) => skill.id),
-      "values": query.values.map((value:any) => values.id)
+      "skills": query.query.skills.map((skill:any) => skill.id),
+      "values": query.query.values.map((value:any) => value.id)
     }
 
     search(queryIds)
     	.then(data => {   
-        // const results = data.data.sort((a:SearchResponse, b:SearchResponse) => {
-        //   return filterMatches(b).length - filterMatches(a).length
-        // })
-        // setApplicants(results)
-        // console.log(data.json())
-        // setApplicants(data.data)
+        const results = data.data.sort((a:SearchResponse, b:SearchResponse) => {
+          return filterMatches(b).length - filterMatches(a).length
+        })
+        setApplicants(results)
       }) 
     }, [query])
   
