@@ -1,3 +1,4 @@
+import { parse } from 'path'
 import { EmployerMessage } from './definitions'
 const baseUrl = 'https://hireup-be.herokuapp.com/api/v1'
 
@@ -11,6 +12,17 @@ export const getApplicants = (): Promise<any> => {
 			}
 		})
 }
+
+export const search = 
+	(query: {skills:Array<number>, values: Array<number>}):Promise<any> => {
+		return fetch(`${baseUrl}/applicants/search`, {
+			method: 'GET', 
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(query)
+		})
+	}
 
 export const getApplicantById = (id: number): Promise<any> => {
 	return fetch(`${baseUrl}/applicants/${id}`)
