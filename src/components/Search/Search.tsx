@@ -2,7 +2,6 @@ import React, { useState, useReducer, useEffect, SyntheticEvent } from 'react'
 import { Link } from 'react-router-dom'
 
 import './Search.scss'
-import { OpenMenuContext } from '../../contexts'
 import { getSearchOptions } from '../../assets/api-calls'
 
 const initialState = {

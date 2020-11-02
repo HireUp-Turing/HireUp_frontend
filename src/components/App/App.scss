@@ -24,9 +24,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	// align-content: center;
 	padding: 0 10em 0 10em;
-	height: 100%;
+	height: min-content;
 	width: 100%;
 	z-index: 3;
 }

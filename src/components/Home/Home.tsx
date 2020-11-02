@@ -6,7 +6,7 @@ import { OpenMenuContext } from '../../contexts/index'
 
 const Home: React.FC = () => {
 	return (
-		<main>
+		<main className="Home">
 			<section className="about">
 				<img src='../images/clipboard.png' alt="clipboard"/>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus viverra adipiscing at in tellus integer. Tristique sollicitudin nibh sit amet. Habitant morbi tristique senectus et netus et malesuada fames ac. Ornare aenean euismod elementum nisi. Rhoncus aenean vel elit scelerisque mauris.</p>
