@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent, findByText, waitFor} from "@testing-library/react";
+import { render, screen, fireEvent, findByText} from "@testing-library/react";
 import Applicant from "./Applicant";
 import { mocked } from 'ts-jest/utils';
 import { getApplicantById } from '../../assets/api-calls'
@@ -26,22 +26,15 @@ describe('Applicant', () => {
         "values": [
           "creativity"
         ]
+      }
     }
-}
     mocked(getApplicantById).mockImplementation(() => 
-      Promise.resolve(mockedApplicant)
-      )
-    // const location: {
-    //     hash: "",
-    //     key: 'j13899',
-    //     pathname: "/applicant/1",
-    //     search: "",
-    //     state: {}
-    // }
+      Promise.resolve(mockedApplicant))
+
+    const auth = 1
 
      const routeComponentPropsMock = {
       history: {
-      // {} as any,
         length: 1,
         location: location
       },
@@ -59,15 +52,14 @@ describe('Applicant', () => {
         url: ""
       }
     }
-    // history props not working!! https://stackoverflow.com/questions/46927392/how-to-test-a-react-component-with-routecomponentprops
-    // const messageForm = jest.fn()
+
     const messageForm = false
     render(<MemoryRouter><AuthContext.Provider value={{auth}}><MessageFormContext.Provider value={{ messageForm }}><Applicant {...routeComponentPropsMock}/></MessageFormContext.Provider>/></AuthContext.Provider></MemoryRouter>)
       
-      const name = await waitFor(() => screen.findByText(/Anonymous Giraffe/i))
-      const bio = await waitFor(() => screen.findByText(/Noodle's mom!/i))
-      const skill1 = await waitFor(() => screen.findByText(/ruby/i))
-      const value1 = await waitFor(() => screen.findByText(/creativity/i))
+      const name = await screen.findByText(/Anonymous Giraffe/i)
+      const bio = await screen.findByText(/Noodle's mom!/i)
+      const skill1 = await screen.findByText(/ruby/i)
+      const value1 = await screen.findByText(/creativity/i)
       
       expect(bio).toBeInTheDocument()
       expect(name).toBeInTheDocument()
