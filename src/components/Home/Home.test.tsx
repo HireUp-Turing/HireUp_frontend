@@ -8,7 +8,7 @@ describe('Home Component', () => {
 
 	it('Should display a about me paragraph and image', () => {
 		render(<MemoryRouter><Home /></MemoryRouter>)
-		const aboutMe = screen.getByText(/lorem ipsum dolor/i)
+		const aboutMe = screen.getByText(/Classifieds/i)
 		const clipboardImage = screen.getByAltText(/clipboard/i)
 		expect(aboutMe).toBeInTheDocument()
 		expect(clipboardImage).toBeInTheDocument()

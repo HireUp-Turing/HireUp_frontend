@@ -21,17 +21,15 @@ const Applicant: React.FC<RouteComponentProps> = (props) => {
   }
 
   useEffect(() => {
-    console.log("***", props.location)
-    console.log("Histroy", props.history)
-    if (props.location.state) {
-      buildApplicant(props.location.state)
-    } else {
+    // if (props.location.state) {
+      // buildApplicant(props.location.state)
+    // } else {
 			const match:any = props.match.params
 			getApplicantById(match.id)
         .then(response => {
 					buildApplicant(response.data)
 				})
-    }
+    // }
   }, [props.location.state, props.match.params])
 
 const determineMatchedAttribute = (attribute: string, keyword: string, props: any):string => {

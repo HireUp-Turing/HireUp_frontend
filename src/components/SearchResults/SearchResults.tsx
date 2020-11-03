@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
-import { getApplicants } from '../../assets/api-calls'
+import { getApplicants, search } from '../../assets/api-calls'
 import { SearchResponse } from '../../assets/definitions'
 import { RouteComponentProps } from 'react-router-dom'
 import './SearchResults.scss'
-
 
 const SearchResults: React.FC<RouteComponentProps> = (props) => {
   const [applicants, setApplicants] = useState<Array<SearchResponse>>([])
@@ -19,10 +18,14 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
       return attributes.filter(attribute => request.some(tag => tag.attribute === attribute))
     } 
 
-    getApplicants()
+    const queryIds = {
+      "skills": query.query.skills.map((skill:any) => skill.id),
+      "values": query.query.values.map((value:any) => value.id)
+    }
+
+    search(queryIds)
     	.then(data => {   
         const results = data.data.sort((a:SearchResponse, b:SearchResponse) => {
-          console.log(filterMatches(b).length - filterMatches(a).length)
           return filterMatches(b).length - filterMatches(a).length
         })
         setApplicants(results)
