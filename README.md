@@ -1,44 +1,126 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-## Available Scripts
+<br />
+<p align="center">
+  <a href="https://github.com/HireUp-Turing/HireUp_frontend">
+    <img src="./public/images/hire-up-logo.png" alt="hire up logo" />
+  </a>
+  <p align="center">
+    <!-- <a href="https://github.com/HireUp-Turing/HireUp_frontend">View Demo</a> -->
+    <!-- · -->
+    <a href="https://github.com/HireUp-Turing/HireUp_frontend/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/HireUp-Turing/HireUp_frontend/issues">Request Feature</a>
+  </p>
+</p>
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [Contact](#contact)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Hire-up is a site which aims to minimize bias in the hiring process and reduce efforts required of job applicants to produce application materials.
 
-### `npm run build`
+As a job seeker, users can create an anonymous applicant profile that highlights their skills and values. Employers can search through these profiles and message applicants who they believe would be a good fit for their open role.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built With
+* [Typescript](https://www.typescriptlang.org/)
+* [React Hooks](https://reactjs.org/)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<!-- GETTING STARTED -->
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To get a local copy up and running follow these simple example steps.
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+```sh
+npm install npm@latest -g
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the repo
+```sh
+git clone git@github.com:HireUp-Turing/HireUp_frontend.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Run the app!
+```sh
+npm run dev
+```
+4. Go to `localhost:3000` in your browser
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Backend
+This app works with a custom built API. For more information on how to use it locally, or about its endpoints, visit [hire-up_backend](https://github.com/HireUp-Turing/HireUp_backend)
 
-## Learn More
+<!-- USAGE EXAMPLES -->
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Search for and message users:
+ <img src="./public/images/search.gif" alt="search-for-and-message-users" />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Sign up as an applicant:
+ <img src="./public/images/make-profile.gif" alt="search-for-and-message-users" />
+
+### View your messages as an applicant:
+ <img src="./public/images/messages.gif" alt="search-for-and-message-users" />
+
+<!-- ROADMAP -->
+## Roadmap
+
+See the [open issues](https://github.com/HireUp-Turing/HireUp_frontend/issues) for a list of proposed features (and known issues).
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- CONTACT -->
+## Contact
+
+[Greyson Elkins](https://www.linkedin.com/in/greyson-elkins/) - greysonelkins@gmail.com  
+[Erin Untermeyer](https://www.linkedin.com/in/erin-untermeyer/) - aerinuntermeyer@gmail.com  
+[Amy Karnaze](https://www.linkedin.com/in/amy-karnaze-ba94b917/) - Akarnaze@gmail.com  
+[Gaby Mendez](https://www.linkedin.com/in/gabymendez/) - gmendez90@gmail.com  
+[Ruthie Rabinovich](https://www.linkedin.com/in/ruthie-r/) - rrabinovitch1@gmail.com
+
+Project: [Hire-Up](https://github.com/HireUp-Turing/HireUp_frontend)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/HireUp-Turing/HireUp_frontend.svg?style=flat-square
+[contributors-url]: https://github.com/HireUp-Turing/HireUp_frontend/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/HireUp-Turing/HireUp_frontend.svg?style=flat-square
+[forks-url]: https://github.com/HireUp-Turing/HireUp_frontend/network/members
+[stars-shield]: https://img.shields.io/github/stars/HireUp-Turing/HireUp_frontend.svg?style=flat-square
+[stars-url]: https://github.com/HireUp-Turing/HireUp_frontend/stargazers
+[issues-shield]: https://img.shields.io/github/issues/HireUp-Turing/HireUp_frontend.svg?style=flat-square
+[issues-url]: https://github.com/HireUp-Turing/HireUp_frontend/issues
+[license-shield]: https://img.shields.io/github/license/HireUp-Turing/HireUp_frontend.svg?style=flat-square
