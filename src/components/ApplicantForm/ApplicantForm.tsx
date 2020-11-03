@@ -90,7 +90,7 @@ const ApplicantForm: React.FC = () => {
 
 	const makeTags = (tags:Array<{attribute:string, id:number}>, type:string) => {
 		return tags.map((tag, i) =>  (
-				<div className="tag-button-box">
+				<div className="tag-button-box" key={`${type}-container-${i}`}>
 				<button
 					className={`attribute-tag ${state[type as keyof Creator]
 						.includes(tag.id) ? "highlight" : ""}`}
