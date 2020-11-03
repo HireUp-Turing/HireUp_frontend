@@ -2,6 +2,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![Build Status](https://travis-ci.org/HireUp-Turing/HireUp_frontend.svg?branch=master)](https://travis-ci.org/HireUp-Turing/HireUp_frontend)
 
 <br />
 <p align="center">
