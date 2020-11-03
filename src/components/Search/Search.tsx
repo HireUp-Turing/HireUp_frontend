@@ -53,7 +53,7 @@ const Search: React.FC = () => {
 	const makeOption = (options:Array<object>, type:string) => {
 		return options.map((option:any, i) => {
 			return (
-				<>
+				<div className="tag-button-box">
 				<button 
 					className={option.checked ? 'attribute-tag highlight' : 'attribute-tag'}
 					key={`${type}-option-${i}`}
@@ -67,7 +67,7 @@ const Search: React.FC = () => {
 				</button>
 				{(i !== 0 && i % Math.floor(options.length / 8) === 0) &&
 					<br />}
-				</>
+				</div>
 			)
 		})
 	}

@@ -48,6 +48,12 @@
   display: none;
 }
 
+.tag-button-box{
+  width: min-content;
+  border: none;
+  float: left;
+}
+
 @keyframes enter {
 	from {
 		margin-right: -30em
