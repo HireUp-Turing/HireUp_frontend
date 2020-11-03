@@ -17,7 +17,7 @@ describe('Inbox', () => {
         {
           "applicant_id": 1,
           "body" : "i want to interview you!",
-          "created_at": "2020-11-01 21:14:27.098863+00:00",
+          "created_at": "November 02, 2020",
           "employer_email" : "info@turing.com",
           "employer_name": "Turing",
           "id": 1,
@@ -42,7 +42,7 @@ const routeComponentPropsMock = {
       const { findByText, findAllByText } = render(<MemoryRouter><AuthContext.Provider value={{auth}}><Inbox {...routeComponentPropsMock} /></AuthContext.Provider></MemoryRouter>)
       const turing = await findAllByText(/turing/i)
       const body = await findByText(/i want to interview you!/i)
-      const date = await findByText("2020-11-01", {exact: false})
+      const date = await findByText("November 02, 2020", {exact: false})
 
       expect(turing.length).toBe(2)
       expect(body).toBeInTheDocument()
