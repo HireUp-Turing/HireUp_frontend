@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid magenta;
   padding: 10em 15em 1em 15em;
 }
 
@@ -23,5 +22,5 @@
 }
 
 .read {
-    border: 1px solid $soft-accent;
+  border: 1px solid $soft-accent;
 }

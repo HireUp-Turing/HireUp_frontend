@@ -5,11 +5,13 @@ import { ApplicantCard, Query } from '../../assets/definitions'
 import './ApplicantPreview.scss'
 
 const ApplicantPreview: React.FC<ApplicantCard> = (props) => {  
+
   const findProfileMatches = (keyword: string) => {
     const { skills, values }:any = props
-    const container = keyword === 'skills' ? skills : values
+    let userAttributeSet = keyword === 'skills' ? skills : values
+    userAttributeSet = userAttributeSet.map((value:any) => value.attribute)
     return props.query.query[keyword as keyof Query]
-      .filter(attribute => container.includes(attribute.attribute) )  
+      .filter(queryTag => userAttributeSet.includes(queryTag.attribute))  
   }
 
   const bioPreview = props.bio.substring(0, 180)
