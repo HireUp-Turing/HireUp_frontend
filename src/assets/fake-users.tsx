@@ -47,9 +47,9 @@ export const users = [{
     skills: ["javascript", "react"],
     values: ["paired programming", "magic"]
   }, {
-  id: 9,
-  username: "Boodie",
-  bio: "I'm the best one you could possibly hire",
-  skills: ["react"],
-  values: ["paired programming", "teamwork"]
+    id: 9,
+    username: "Boodie",
+    bio: "I'm the best one you could possibly hire",
+    skills: ["react"],
+    values: ["paired programming", "teamwork"]
 }]
