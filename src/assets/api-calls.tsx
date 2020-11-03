@@ -1,4 +1,3 @@
-import { parse } from 'path'
 import { EmployerMessage } from './definitions'
 const baseUrl = 'https://hireup-be.herokuapp.com/api/v1'
 
