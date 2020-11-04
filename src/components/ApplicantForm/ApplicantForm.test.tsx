@@ -4,7 +4,6 @@ import { render, screen } from "@testing-library/react"
 import { mocked } from 'ts-jest/utils'
 import '@testing-library/jest-dom'
 import { MemoryRouter } from "react-router-dom"
-import { AuthContext } from '../../contexts/index'
 import { getAttributes } from '../../assets/api-calls'
 jest.mock('../../assets/api-calls')
 

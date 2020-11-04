@@ -1,47 +1,37 @@
 import React from 'react'
 import SearchResults from './SearchResults'
-import { render, screen} from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { mocked } from 'ts-jest/utils'
 import { MemoryRouter } from 'react-router-dom'
-import { getApplicants } from '../../assets/api-calls'
+import { search } from '../../assets/api-calls'
 jest.mock('../../assets/api-calls')
 
 describe('SearchResults', () => {
 
-  it.skip('Should render applicants on the page', async () => {
-    const mockedApplicants = {
+  it('Should render applicants on the page', async () => {
+    const mockedSearch = {
       "success": true,
       "data": [
         {
-        "id": 1,
-        "username": "Anonymous Giraffe",
-        "bio": "Noodle's mom!",
-        "skills": [
-            "rails",
-            "ruby"
-        ],
-        "values": [
-            "creativity"
-        ]
+					id: 1,
+					username: "Finn",
+					bio: "I'm a grey kitty and need a job",
+					skills: [{ attribute: "rails" }, { attribute: "ruby" }],
+					values: [{ attribute: "creativity" }]
         },
         {
-        "id": 2,
-        "username": "Anonymous Giraffe",
-        "bio": "Noodle's mom's accountabilabuddy!",
-        "skills": [
-            "rails",
-            "flask"
-        ],
-        "values": [
-            "creativity",
-            "mentorship"
-        ]
+					id: 2,
+					username: "Howard",
+					bio: "I need to start contributing to this household",
+					skills: [{ attribute: "javascript" }, { attribute: "ruby" }],
+					values: [{ attribute: "creativity" }]
         }
       ]
     }
 
-    mocked(getApplicants).mockImplementation(() =>
-    Promise.resolve(mockedApplicants))
+    mocked(search).mockImplementation(() =>
+			Promise.resolve(mockedSearch)
+		)
     
     const query = { 
       query: {
@@ -63,42 +53,35 @@ describe('SearchResults', () => {
     }
 
 
-    const routeComponentPropsMock = {
-      history: {} as any,
-      location: {
-        hash: "",
-        key: 'j13899',
-        pathname: "/applicant/1",
-        search: "",
-        state: {query}
-      },
-      match: {
-        isExact: true,
-        params: {id: 1},
-        path: "",
-        url: ""
-      }
-    }
+		const routeComponentPropsMock = {
+			history: {} as any,
+			location: {
+				state: query as any,
+				pathname: "",
+				search: "",
+				hash: ""
+			},
+			match: {
+				isExact: true,
+				params: { id: 1 },
+				path: "",
+				url: ""
+			}
+		}
 
-    render(
-    <MemoryRouter>
-      <SearchResults 
-        {...routeComponentPropsMock}  
-        query={query}
-      />
-      </MemoryRouter>
+		const { findByText } = render(
+			<MemoryRouter>
+				<SearchResults 
+					{...routeComponentPropsMock}
+				/>
+			</MemoryRouter>
     )
 
-      const value = screen.findByText(/rails/i)
-      const skill = screen.findByText(/creativity/i)
-      const name = screen.findByText(/anonymous giraffe/i)
-      const noodle = screen.findAllByText(/noodle/i)
+		const applicant1 = await findByText(/finn/i)
+		const applicant2 = await findByText(/howard/i)
 
-      expect(value).toBeInTheDocument()
-      expect(skill).toBeInTheDocument()
-      expect(name).toBeInTheDocument()
-      expect(noodle.length).toBe(2)
-  
-    })
+		expect(applicant1).toBeInTheDocument()
+		expect(applicant2).toBeInTheDocument()
+	})
 
 })
