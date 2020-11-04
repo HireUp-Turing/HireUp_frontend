@@ -37,7 +37,8 @@ describe('Inbox', () => {
 		}
 
 		mocked(getMessages).mockImplementation(() =>
-			Promise.resolve(mockedMessages))
+			Promise.resolve(mockedMessages)
+		)
 
 		const setAuth = jest.fn()
 		const auth = 1

@@ -1,6 +1,6 @@
 import React from "react"
 import MessageForm from "./MessageForm"
-import { render, screen, fireEvent, act, findByText, findByDisplayValue} from "@testing-library/react"
+import { render, screen, fireEvent, findByText, act } from "@testing-library/react"
 import { mocked } from 'ts-jest/utils'
 import { MemoryRouter } from "react-router-dom"
 import { MessageFormContext } from '../../contexts/index'
@@ -42,7 +42,7 @@ describe('MessageForm', () => {
     expect(nameInput).toBeInTheDocument()
   })
 
-  it.skip('Should fire the correct method when send button clicked', async () => {
+  it('Should fire the correct method when send button clicked', async () => {
     let mockedMessage = {
       "success": true,
       "data": {
@@ -58,11 +58,11 @@ describe('MessageForm', () => {
     }
 
     mocked(sendMessage).mockImplementation(() =>
-    Promise.resolve(mockedMessage)
+    	Promise.resolve(mockedMessage)
     )
     
-		const messageForm = true
-		const showMessageForm = jest.fn()
+		let messageForm = false
+		const showMessageForm = (() => messageForm = true)
 		const routeComponentPropsMock = {
 			history: {} as any,
 			location: {} as any,
@@ -74,7 +74,7 @@ describe('MessageForm', () => {
 			}
 		}
 
-		render(
+		const { findByLabelText, queryByLabelText, findByText } = render(
 			<MemoryRouter>
 				<MessageFormContext.Provider value={{ messageForm, showMessageForm }}>
 					<MessageForm {...routeComponentPropsMock} />
@@ -82,17 +82,28 @@ describe('MessageForm', () => {
 			</MemoryRouter>
 		)
 
-    const employerName = await screen.findByLabelText(/name/i)
-    const employerEmail = await screen.findByLabelText(/email/i)
-    const message = await screen.findByLabelText(/message/i)
-      
-    fireEvent.change(employerName, { target: { value: /google/i } })
-    fireEvent.change(employerEmail, { target: { value: /google@gmail.com/i } })
-    fireEvent.change(message, { target: { value: /please work for us!/i} })
+    const employerName = await findByLabelText(/name/i)
+    const employerEmail = await findByLabelText(/email/i)
+		const message = await findByLabelText(/message/i)
+		
+		act(() => {
+			fireEvent.change(employerName, { target: { value: /google/i } })
+			fireEvent.change(employerEmail, { target: { value: /google@gmail.com/i } })
+			fireEvent.change(message, { target: { value: /please work for us!/i} })
+		})
+		
 
-    const sendButton = await screen.findByRole("button", { name: /send/i })
-    fireEvent.click(sendButton)
-    expect(sendMessage).toBeCalledTimes(1)
+		const sendButton = await screen.findByRole("button", { name: /send/i })
+		fireEvent.click(sendButton)
+
+		setTimeout(() => {
+			const success = screen.getByText(/success!/i)
+			expect(success).toBeInTheDocument()
+		}, 1000)
+
+		setTimeout(() => {
+			expect(showMessageForm).toBeCalledTimes(1)
+		}, 3000)
   })
 
   it('Should reflect a change in input', async () => {
