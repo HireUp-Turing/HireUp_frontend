@@ -16,7 +16,7 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
       const attributes = [...data.skills, ...data.values]
       const request = [...query.query.skills, ...query.query.values]
       return attributes.filter(attribute => request.some(tag => tag.attribute === attribute))
-    } 
+		}
 
     const queryIds = {
       "skills": query.query.skills.map((skill:any) => skill.id),
@@ -24,7 +24,7 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
     }
 
     search(queryIds)
-    	.then(data => {   
+    	.then(data => { 
         const results = data.data.sort((a:SearchResponse, b:SearchResponse) => {
           return filterMatches(b).length - filterMatches(a).length
         })
