@@ -1,16 +1,15 @@
-import React from "react";
-import { render, screen, fireEvent, findByText, waitFor} from "@testing-library/react";
-import Inbox from "./Inbox";
-import { mocked } from 'ts-jest/utils';
-import { getMessages } from '../../assets/api-calls'
-import '@testing-library/jest-dom'
-import { MemoryRouter } from "react-router-dom";
+import React from "react"
+import Inbox from "./Inbox"
+import { render } from "@testing-library/react"
+import { mocked } from 'ts-jest/utils'
+import { MemoryRouter } from "react-router-dom"
 import { AuthContext } from '../../contexts/index'
-
+import { getMessages } from '../../assets/api-calls'
 jest.mock('../../assets/api-calls')
 
 describe('Inbox', () => {
-  it('should render messages', async () => {
+
+  it('Should render messages', async () => {
     let mockedMessages = {
       "success": true,
       "data": [
@@ -26,26 +25,37 @@ describe('Inbox', () => {
       ]
     }
       
-const routeComponentPropsMock = {
-    history: {} as any,
-    location: {} as any,
-    match: {
-       isExact: true,
-        params: {id: 1},
-        path: "",
-        url: ""}
-}
-    const auth = 1;
-    mocked(getMessages).mockImplementation(() => 
-      Promise.resolve(mockedMessages))
+		const routeComponentPropsMock = {
+			history: {} as any,
+			location: {} as any,
+			match: {
+				isExact: true,
+				params: { id: 1 },
+				path: "",
+				url: ""
+			}
+		}
 
-      const { findByText, findAllByText } = render(<MemoryRouter><AuthContext.Provider value={{auth}}><Inbox {...routeComponentPropsMock} /></AuthContext.Provider></MemoryRouter>)
-      const turing = await findAllByText(/turing/i)
-      const body = await findByText(/i want to interview you!/i)
-      const date = await findByText("November 02, 2020", {exact: false})
+		mocked(getMessages).mockImplementation(() =>
+			Promise.resolve(mockedMessages))
 
-      expect(turing.length).toBe(2)
-      expect(body).toBeInTheDocument()
-      expect(date).toBeInTheDocument()
-    })
+		const setAuth = jest.fn()
+		const auth = 1
+
+		const { findByText, findAllByText } = render(
+			<MemoryRouter>
+				<AuthContext.Provider value={{ auth , setAuth }}>
+					<Inbox {...routeComponentPropsMock} />
+				</AuthContext.Provider>
+			</MemoryRouter>
+		)
+		const turing = await findAllByText(/turing/i)
+		const body = await findByText(/i want to interview you!/i)
+		const date = await findByText(/november 02, 2020/i)
+
+		expect(turing.length).toBe(2)
+		expect(body).toBeInTheDocument()
+		expect(date).toBeInTheDocument()
+	})
+
 })

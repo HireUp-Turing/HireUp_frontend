@@ -2,7 +2,6 @@ import React from "react"
 import Applicant from "./Applicant"
 import { render, screen } from "@testing-library/react"
 import { mocked } from 'ts-jest/utils'
-import '@testing-library/jest-dom'
 import { MemoryRouter } from "react-router-dom"
 import { getApplicantById } from '../../assets/api-calls'
 jest.mock('../../assets/api-calls')
