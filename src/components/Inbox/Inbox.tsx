@@ -46,7 +46,7 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
   const markRead = (event:any, messageId:number) => {
     setMessages(messages.map(message => {
       if (message.id === messageId) {
-        message.read_status = true;
+        message.read_status = true
       }
     	return message
     }))

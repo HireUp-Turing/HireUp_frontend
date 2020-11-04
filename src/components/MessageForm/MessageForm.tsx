@@ -3,8 +3,8 @@ import { RouteComponentProps } from 'react-router-dom'
 
 import { EmployerMessage } from '../../assets/definitions'
 import { sendMessage } from '../../assets/api-calls'
-import './MessageForm.scss'
 import { MessageFormContext } from '../../contexts'
+import './MessageForm.scss'
 
 const MessageForm: React.FC<RouteComponentProps> = (props) => {
   const [message, setMessage] = useState<EmployerMessage>({employer_name: '', employer_email: '', body: ''})

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { routes } from '../../routes/index'
 import { Route, Switch } from 'react-router-dom'
 
 import Header from '../Header/Header'
 import Search from '../Search/Search'
+import { routes } from '../../routes/index'
 import { AuthContext, OpenMenuContext } from '../../contexts/index'
 import './App.scss'
 
@@ -33,10 +33,10 @@ const App: React.FC = () => {
 				</AuthContext.Provider>
 			</div>
 			{!isHidden && 
-					<div className={isOpen ? 'enter': 'exit'} style={{display: isHidden ? 'none': ''}}>
-						<Search />
-					</div> 
-				}
+				<div className={isOpen ? 'enter': 'exit'} style={{display: isHidden ? 'none': ''}}>
+					<Search />
+				</div> 
+			}
 		</div>
   )
 }
