@@ -52,11 +52,9 @@ describe('Inbox', () => {
 		)
 		const turing = await findAllByText(/turing/i)
 		const body = await findByText(/i want to interview you!/i)
-		const date = await findByText(/november 02, 2020/i)
 
 		expect(turing.length).toBe(2)
 		expect(body).toBeInTheDocument()
-		expect(date).toBeInTheDocument()
 	})
 
 })

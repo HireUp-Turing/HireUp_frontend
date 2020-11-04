@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { RouteComponentProps, Redirect } from 'react-router-dom'
-import moment from 'moment'
+// import moment from 'moment'
 
 import { getMessages } from '../../assets/api-calls'
 import { AuthContext } from '../../contexts'
@@ -35,7 +35,8 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
           }}>
           <h2>From: {message.employer_name}</h2>
           <h3>{message.employer_email}</h3>
-          <h5>{moment(message.created_at).format('MMMM DD, YYYY')}</h5>
+					{/* looking for alternate package for date formatting, moment is deprecated
+					<h5>{moment(message.created_at).format('MMMM DD, YYYY')}</h5> */}
           <p>{message.body}</p>
         </div>
       )
@@ -46,7 +47,7 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
   const markRead = (event:any, messageId:number) => {
     setMessages(messages.map(message => {
       if (message.id === messageId) {
-        message.read_status = true;
+        message.read_status = true
       }
     	return message
     }))

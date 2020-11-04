@@ -1,8 +1,8 @@
 import React, { useState, useReducer, useEffect, SyntheticEvent } from 'react'
 import { Link } from 'react-router-dom'
 
-import './Search.scss'
 import { getSearchOptions } from '../../assets/api-calls'
+import './Search.scss'
 
 const initialState = {
 	skills: [],
@@ -46,7 +46,7 @@ const Search: React.FC = () => {
 		const markedAttribute = change
 			.filter((option:any) => option.attribute === selection)
 		const index = state[type].indexOf(markedAttribute[0])
-		change[index].checked = change[index].checked ? false : true;
+		change[index].checked = change[index].checked ? false : true
 		dispatch({type, change})
 	}
 	

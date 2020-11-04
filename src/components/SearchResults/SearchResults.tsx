@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
 import ApplicantPreview from '../ApplicantPreview/ApplicantPreview'
 import { search } from '../../assets/api-calls'
 import { SearchResponse } from '../../assets/definitions'
-import { RouteComponentProps } from 'react-router-dom'
 import './SearchResults.scss'
 
 const SearchResults: React.FC<RouteComponentProps> = (props) => {

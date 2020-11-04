@@ -21,6 +21,7 @@ const Applicant: React.FC<RouteComponentProps> = (props) => {
   }
 
   useEffect(() => {
+		// the commented out code here will be put to use when we clean the data
     // if (props.location.state) {
       // buildApplicant(props.location.state)
     // } else {

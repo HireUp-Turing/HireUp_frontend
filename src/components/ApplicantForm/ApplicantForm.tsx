@@ -115,7 +115,7 @@ const ApplicantForm: React.FC = () => {
 				setSuccessfulPost(true)
 			})
 			.catch(error => {
-				console.log(error)
+				console.error(error)
 			})
 	}
 

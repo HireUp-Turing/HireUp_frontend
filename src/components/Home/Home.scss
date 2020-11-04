@@ -2,15 +2,18 @@
 
 .Home {
 	margin-top: 10em;
+	padding: 0 15em;
 }
 
 .about {
 	display: flex;
+	align-items: center;
 	font-size: 1.4em;
 	text-justify: left;
 
 	img {
-		width: 40%;
+		width: 15em;
+		height: 15em;
 	}
 
 	p {
