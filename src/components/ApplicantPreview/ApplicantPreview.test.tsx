@@ -47,7 +47,7 @@ describe('ApplicantPreview Component', () => {
 		expect(avatar).toBeInTheDocument()
 	})
 
-	it.skip('Should display skills and values match details', () => {
+	it('Should display skills and values match details', () => {
 		render(
 			<MemoryRouter>
 				<ApplicantPreview
@@ -57,16 +57,17 @@ describe('ApplicantPreview Component', () => {
 					skills={[{ attribute: "ruby", id: 1 }, { attribute: "javascript", id: 1 }]}
 					values={[{ attribute: "teamwork", id: 1 }, { attribute: "management", id: 1 }]}
 					query={{query: {
-						skills: [{attribute: "ruby", checked: true }],
+						skills: [{ attribute: "ruby", checked: true }, { attribute: "javascript", checked: true }],
 						values: [{attribute: "teamwork", checked: true}]
 					}}}
 				/>
 			</MemoryRouter>
 		)
-
-		// these aren't rendering correctly passed on the props being passed in but because of the possibility we are changing the data up, I didn't go any further.
-		const skillsMatch = screen.getByText(/1\/1/i)
+		
+		const skillsMatch = screen.getByText(/2 \/ 2/i)
+		const valuesMatch = screen.getByText(/1 \/ 1/i)
 		expect(skillsMatch).toBeInTheDocument()
+		expect(valuesMatch).toBeInTheDocument()
 	})
 
 })

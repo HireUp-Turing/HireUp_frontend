@@ -52,7 +52,7 @@ const MessageForm: React.FC<RouteComponentProps> = (props) => {
           <textarea id="employer_email" className="applicant-input" onChange={handleMessageChange}/>
           <label htmlFor="body">Your message here:</label>
           <textarea id="body" className="applicant-input" rows={3} onChange={handleMessageChange}/>
-          <input type="submit" value="Send" className="cta-button"/>
+          <button className="cta-button" value="Send" placeholder="send">Send</button>
           <h3>{error}</h3>
         </form>
       )} 

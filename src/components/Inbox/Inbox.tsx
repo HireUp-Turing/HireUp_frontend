@@ -23,14 +23,13 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
     const match:any = props.match.params
     getMessages(match.id).then(response => {
       setMessages(response.data)
-      console.log(response.data)
     })
   }, [props.match.params])
 
   const displayMessages = () => {
     const inbox = messages.map((message, i) => {
       return (
-        <div className={message.read_status ? "read" : "message-info"}
+        <div key={i} className={message.read_status ? "read" : "message-info"}
           onClick={(event) => {
             markRead(event, message.id)
           }}>
@@ -49,28 +48,27 @@ const Inbox: React.FC<RouteComponentProps> = (props) => {
       if (message.id === messageId) {
         message.read_status = true;
       }
-    return message
-    })
-    )
+    	return message
+    }))
   }
 
   return (
-    <AuthContext.Consumer>
-     {({ auth }) => {
-       const match:any = props.match.params
-       if(auth !== parseInt(match.id)) {
-        return (
-          <Redirect to={`/applicant/${match.id}`} />
-        )} else {
-          return (
-            <div className="message-container">    
-              {displayMessages()}
-            </div>
-          )
-        }
-       }
-     } 
-    </AuthContext.Consumer>
+		<AuthContext.Consumer>
+			{({ auth }) => {
+				const match:any = props.match.params
+					if(auth !== parseInt(match.id)) {
+					return (
+						<Redirect to={`/applicant/${match.id}`} />
+					)} else {
+					return (
+						<div className="message-container">    
+							{displayMessages()}
+						</div>
+					)
+					}
+				}
+			}
+		</AuthContext.Consumer>
   )
 }
 

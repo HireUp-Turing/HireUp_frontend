@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-
-import { ApplicantProfile } from '../../assets/definitions'
-import  MessageForm from '../MessageForm/MessageForm'
-import { getApplicantById } from '../../assets/api-calls'
 import { RouteComponentProps } from 'react-router-dom'
-import './Applicant.scss'
+
+import  MessageForm from '../MessageForm/MessageForm'
+import { ApplicantProfile } from '../../assets/definitions'
+import { getApplicantById } from '../../assets/api-calls'
 import { AuthContext, MessageFormContext } from '../../contexts'
+import './Applicant.scss'
 
 const Applicant: React.FC<RouteComponentProps> = (props) => {
   const [applicant, setApplicant] = useState<ApplicantProfile>({username: '', bio: '', skills: [], values: []})
