@@ -77,6 +77,7 @@ This app works with a custom built API. For more information on how to use it lo
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+The current version of HireUp is a demo and login features have not yet been implemented. To use the site as an applicant, you must create a new profile.
 
 ### Search for and message users:
  <img src="./public/images/search.gif" alt="search-for-and-message-users" />
