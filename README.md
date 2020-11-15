@@ -10,8 +10,8 @@
     <img src="./public/images/hire-up-logo.png" alt="hire up logo" />
   </a>
   <p align="center">
-    <!-- <a href="https://github.com/HireUp-Turing/HireUp_frontend">View Demo</a> -->
-    <!-- · -->
+    <a href="https://hire-up-turing.herokuapp.com/">View Deployed</a>
+    ·
     <a href="https://github.com/HireUp-Turing/HireUp_frontend/issues">Report Bug</a>
     ·
     <a href="https://github.com/HireUp-Turing/HireUp_frontend/issues">Request Feature</a>
