@@ -25,7 +25,7 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
 
     search(queryIds)
     	.then(data => { 
-        const results = data.data.sort((a:SearchResponse, b:SearchResponse) => {
+        const results = data.sort((a:SearchResponse, b:SearchResponse) => {
           return filterMatches(b).length - filterMatches(a).length
         })
         setApplicants(results)

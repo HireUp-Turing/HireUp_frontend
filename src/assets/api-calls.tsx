@@ -1,5 +1,5 @@
 import { EmployerMessage } from './definitions'
-import { cleanAttributes } from './helpers'
+import { cleanApplicants, cleanAttributes } from './helpers'
 const baseUrl = 'https://hireup-be.herokuapp.com/api/v1'
 
 export const getApplicants = (): Promise<any> => {
@@ -29,6 +29,9 @@ export const search =
 				throw response
 			}
 		})
+		.then(response => {
+			return cleanApplicants(response.data)
+		})	
 	}
 
 export const getApplicantById = (id: number): Promise<any> => {
