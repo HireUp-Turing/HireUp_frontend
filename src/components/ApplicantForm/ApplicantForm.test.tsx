@@ -10,9 +10,7 @@ jest.mock('../../assets/api-calls')
 describe('ApplicantForm', () => {
 
 	it('Should render a form', async () => {
-		const mockedAttributes = {
-			"success": true,
-			"data": [
+		const mockedAttributes = [
 				{
 					"id": 1,
 					"attribute": "rails"
@@ -30,7 +28,6 @@ describe('ApplicantForm', () => {
 					"attribute": "organization"
 				}
 			]
-		}
 
     mocked(getAttributes).mockImplementation(() => 
     Promise.resolve(mockedAttributes))

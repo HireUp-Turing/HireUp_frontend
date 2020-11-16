@@ -7,37 +7,32 @@ import { getSearchOptions } from '../../assets/api-calls'
 jest.mock('../../assets/api-calls')
 
 describe('Search Component', () => {
-	let mockedSearchOptions: { success: boolean, data: Array<any> }
+	let mockedSearchOptions: { skills:Array<any>, values:Array<any> }
 
 	beforeEach(() => {
 		mockedSearchOptions = {
-			"success": true,
-			"data": [
+			"skills": [
 				{
-					"skills": [
-						{
-							"id": 2,
-							"attribute": "flask"
-						},
-						{
-							"id": 1,
-							"attribute": "rails"
-						},
-						{
-							"id": 3,
-							"attribute": "ruby"
-						}
-					],
-					"values": [
-						{
-							"id": 1,
-							"attribute": "creativity"
-						},
-						{
-							"id": 2,
-							"attribute": "mentorship"
-						}
-					]
+					"id": 2,
+					"attribute": "flask"
+				},
+				{
+					"id": 1,
+					"attribute": "rails"
+				},
+				{
+					"id": 3,
+					"attribute": "ruby"
+				}
+			],
+			"values": [
+				{
+					"id": 1,
+					"attribute": "creativity"
+				},
+				{
+					"id": 2,
+					"attribute": "mentorship"
 				}
 			]
 		}
