@@ -5,8 +5,8 @@ export interface ApplicantCard extends SearchResponse {
 export interface ApplicantProfile {
 	username:string,
 	bio:string,
-	skills:Array<string>,
-	values:Array<string> 
+	skills:Array<Attribute>,
+	values:Array<Attribute> 
 }
 
 export interface SearchResponse {
@@ -35,7 +35,7 @@ export type AttributeList = {
 // this is the attribute type we will use
 //DO NOT DELETE 
 export type Attribute = {
-	attribute?: string
+	attribute?: string 
 	id?: number
 }
 

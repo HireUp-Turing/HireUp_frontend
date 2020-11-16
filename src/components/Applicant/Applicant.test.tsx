@@ -17,11 +17,11 @@ describe('Applicant', () => {
         "email": "gaby@hireup.com",
         "bio": "Noodle's mom!",
         "skills": [
-          "rails",
-          "ruby"
+          {"attribute": "rails"},
+          {"attribute": "ruby"}
         ],
         "values": [
-          "creativity"
+          {"attribute":"creativity"}
         ]
       }
     }

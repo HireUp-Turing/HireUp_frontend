@@ -33,7 +33,7 @@ const Applicant: React.FC<RouteComponentProps> = (props) => {
     // }
   }, [props.location.state, props.match.params])
 
-const determineMatchedAttribute = (attribute: string, keyword: string, props: any):string => {
+const determineMatchedAttribute = (attribute: string | undefined, keyword: string, props: any):string => {
     if (props 
       && props.attributeMatches 
       && props.attributeMatches[keyword][0] 
@@ -50,10 +50,10 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
     return container.map((attribute, i) => {
       return (
         <p 
-          className={determineMatchedAttribute(attribute, keyword, props.location.state)} 
+          className={determineMatchedAttribute(attribute.attribute, keyword, props.location.state)} 
           key={`${keyword}-${i}`}
         >
-          {attribute}
+          {attribute.attribute}
         </p>
         )
       })
