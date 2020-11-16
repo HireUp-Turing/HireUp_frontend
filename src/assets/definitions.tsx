@@ -17,11 +17,23 @@ export interface SearchResponse {
   values: Array<Attribute>
 }
 
+export interface Applicant {
+  id: number
+	username: string
+	email: string
+  bio: string
+  skills: Array<Attribute>
+  values: Array<Attribute>
+}
+
 export type AttributeList = {
 	skills: Array<Attribute>
 	values: Array<Attribute>
 }
 
+
+// this is the attribute type we will use
+//DO NOT DELETE 
 export type Attribute = {
 	attribute?: string
 	id?: number
