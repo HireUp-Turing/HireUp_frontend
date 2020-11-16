@@ -21,16 +21,15 @@ const Applicant: React.FC<RouteComponentProps> = (props) => {
   }
 
   useEffect(() => {
-		// the commented out code here will be put to use when we clean the data
-    // if (props.location.state) {
-      // buildApplicant(props.location.state)
-    // } else {
+    if (props.location.state) {
+      buildApplicant(props.location.state)
+    } else {
 			const match:any = props.match.params
 			getApplicantById(match.id)
         .then(response => {
-					buildApplicant(response.data)
+					buildApplicant(response)
 				})
-    // }
+    }
   }, [props.location.state, props.match.params])
 
 const determineMatchedAttribute = (attribute: string | undefined, keyword: string, props: any):string => {
