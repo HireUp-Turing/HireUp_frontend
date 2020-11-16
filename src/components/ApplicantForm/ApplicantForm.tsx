@@ -82,10 +82,8 @@ const ApplicantForm: React.FC = () => {
 	}
 
 	const getTagData = async () => ({
-		skills: await getAttributes('skills')
-			.then(data => data.data),
+		skills: await getAttributes('skills'),
 		values: await getAttributes('values')
-			.then(data => data.data)
 	}) 
 
 	const makeTags = (tags:Array<{attribute:string, id:number}>, type:string) => {
