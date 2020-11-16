@@ -47,13 +47,11 @@ export const getSearchOptions = (): Promise<any> => {
 		.then(response => {
 			if (response.ok) {
 				return response.json()
-				
 			} else {
 				throw response
 			}	
 		})
 		.then(response => {
-			console.log(response)
 			return {
 				skills: cleanAttributes(response.data[0].skills),
 				values: cleanAttributes(response.data[0].values)
@@ -69,6 +67,9 @@ export const getAttributes = (attribute:string): Promise<any> => {
 			} else {
 				throw response
 			}
+		})
+		.then(response => {
+			return cleanAttributes(response.data)
 		})	
 }
 
