@@ -23,8 +23,8 @@ export type AttributeList = {
 }
 
 export type Attribute = {
-	attribute: string
-	id: number
+	attribute?: string
+	id?: number
 }
 
 export type OpenMenuType = {
