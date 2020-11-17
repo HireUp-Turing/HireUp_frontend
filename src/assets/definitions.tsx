@@ -5,8 +5,8 @@ export interface ApplicantCard extends SearchResponse {
 export interface ApplicantProfile {
 	username:string,
 	bio:string,
-	skills:Array<string>,
-	values:Array<string> 
+	skills:Array<Attribute>,
+	values:Array<Attribute> 
 }
 
 export interface SearchResponse {
@@ -17,14 +17,26 @@ export interface SearchResponse {
   values: Array<Attribute>
 }
 
+export interface Applicant {
+  id: number
+	username: string
+	email: string
+  bio: string
+  skills: Array<Attribute>
+  values: Array<Attribute>
+}
+
 export type AttributeList = {
 	skills: Array<Attribute>
 	values: Array<Attribute>
 }
 
+
+// this is the attribute type we will use
+//DO NOT DELETE 
 export type Attribute = {
-	attribute: string
-	id: number
+	attribute?: string 
+	id?: number
 }
 
 export type OpenMenuType = {

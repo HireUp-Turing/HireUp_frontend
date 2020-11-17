@@ -28,9 +28,8 @@ const Search: React.FC = () => {
 	const updateSearchOptions = () => {
 		getSearchOptions()
 			.then(data => {
-				let options = data.data[0]
-				Object.keys(options).forEach(option => {
-					const checkboxes = options[option].map((attribute: object) => {
+				Object.keys(data).forEach(option => {
+					const checkboxes = data[option].map((attribute: object) => {
 						const checkbox = Object.assign(attribute)
 						checkbox.checked = false
 						return checkbox

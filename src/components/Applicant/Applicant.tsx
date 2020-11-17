@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { Attributes, useEffect, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import  MessageForm from '../MessageForm/MessageForm'
-import { ApplicantProfile } from '../../assets/definitions'
+import { ApplicantProfile, Attribute } from '../../assets/definitions'
 import { getApplicantById } from '../../assets/api-calls'
 import { AuthContext, MessageFormContext } from '../../contexts'
 import './Applicant.scss'
@@ -21,19 +21,18 @@ const Applicant: React.FC<RouteComponentProps> = (props) => {
   }
 
   useEffect(() => {
-		// the commented out code here will be put to use when we clean the data
-    // if (props.location.state) {
-      // buildApplicant(props.location.state)
-    // } else {
+    if (props.location.state) {
+      buildApplicant(props.location.state)
+    } else {
 			const match:any = props.match.params
 			getApplicantById(match.id)
         .then(response => {
-					buildApplicant(response.data)
+					buildApplicant(response)
 				})
-    // }
+    }
   }, [props.location.state, props.match.params])
 
-const determineMatchedAttribute = (attribute: string, keyword: string, props: any):string => {
+const determineMatchedAttribute = (attribute: string | undefined, keyword: string, props: any):string => {
     if (props 
       && props.attributeMatches 
       && props.attributeMatches[keyword][0] 
@@ -44,24 +43,22 @@ const determineMatchedAttribute = (attribute: string, keyword: string, props: an
 		}
 	}
 
-  const makeTags = (keyword:string) => {
-    const { skills, values } = applicant
-    const container = keyword === 'skills' ? skills : values
-    return container.map((attribute, i) => {
-      return (
-        <p 
-          className={determineMatchedAttribute(attribute, keyword, props.location.state)} 
-          key={`${keyword}-${i}`}
-        >
-          {attribute}
-        </p>
-        )
-      })
-    }
+  const makeTags = (attributes:Array<Attribute>, keyword:string) => {
+    return attributes.map((attribute, i) => {
+    return (
+      <p 
+        className={determineMatchedAttribute(attribute.attribute, keyword, props.location.state)} 
+        key={`${keyword}-${i}`}
+      >
+        {attribute.attribute}
+      </p>
+      )
+    })
+  }
 
     const attributeLists = {
-    skillTags: makeTags('skills'),
-    valueTags: makeTags('values')
+    skillTags: makeTags(applicant.skills, 'skills'),
+    valueTags: makeTags(applicant.values, 'values')
   }
 
   return (

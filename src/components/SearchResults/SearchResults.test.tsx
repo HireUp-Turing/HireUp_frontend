@@ -9,9 +9,8 @@ jest.mock('../../assets/api-calls')
 describe('SearchResults', () => {
 
   it('Should render applicants on the page', async () => {
-    const mockedSearch = {
-      "success": true,
-      "data": [
+    const mockedSearch =
+     [
         {
 					id: 1,
 					username: "Finn",
@@ -27,7 +26,6 @@ describe('SearchResults', () => {
 					values: [{ attribute: "creativity" }]
         }
       ]
-    }
 
     mocked(search).mockImplementation(() =>
 			Promise.resolve(mockedSearch)

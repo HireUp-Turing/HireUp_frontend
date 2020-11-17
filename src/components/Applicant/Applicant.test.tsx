@@ -10,20 +10,17 @@ describe('Applicant', () => {
 
   it('Should render an applicant', async () => {
     const mockedApplicant = {
-      "success": true,
-      "data": {
-        "id": 1,
-        "username": "Anonymous Giraffe",
-        "email": "gaby@hireup.com",
-        "bio": "Noodle's mom!",
-        "skills": [
-          "rails",
-          "ruby"
-        ],
-        "values": [
-          "creativity"
-        ]
-      }
+			"id": 1,
+			"username": "Anonymous Giraffe",
+			"email": "gaby@hireup.com",
+			"bio": "Noodle's mom!",
+			"skills": [
+				{"attribute": "rails"},
+				{"attribute": "ruby"}
+			],
+			"values": [
+				{"attribute":"creativity"}
+			]
     }
     mocked(getApplicantById).mockImplementation(() => 
       Promise.resolve(mockedApplicant))
