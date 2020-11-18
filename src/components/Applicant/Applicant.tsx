@@ -56,7 +56,7 @@ const determineMatchedAttribute = (attribute: string | undefined, keyword: strin
     })
   }
 
-    const attributeLists = {
+  const attributeLists = {
     skillTags: makeTags(applicant.skills, 'skills'),
     valueTags: makeTags(applicant.values, 'values')
   }

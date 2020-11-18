@@ -2,7 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react'
 import { Redirect } from 'react-router-dom'
 
 import { getNames, getAttributes, postApplicant } from '../../assets/api-calls'
-import { Creator } from '../../assets/definitions'
+import { NewApplicant, ApiAttribute } from '../../assets/definitions'
 import { AuthContext } from '../../contexts'
 import './ApplicantForm.scss'
 
@@ -16,7 +16,7 @@ const initialState = {
 	values: []
 }
 
-const reducer = (state:Creator, update:{payload:string | number, type:string}) => {
+const reducer = (state:NewApplicant, update:{payload:any, type:string}) => {
 	switch(update.type) {
 		case 'username':
 		case 'bio':
@@ -32,7 +32,7 @@ const reducer = (state:Creator, update:{payload:string | number, type:string}) =
 			if (state[update.type].includes(update.payload)) {
 				return {
 					...state,
-					[update.type]: state[update.type].filter((id:number) => id !== update.payload)
+					[update.type]: state[update.type].filter(id => id !== update.payload)
 				}
 			} else {
 				return {
@@ -51,7 +51,7 @@ const ApplicantForm: React.FC = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	const [username, setUsername] = useState<string>('')
 	const [successfulPost, setSuccessfulPost] = useState<boolean>(false)
-	const [newApplicant, setNewApplicant] = useState<Creator>({})
+	const [newApplicant, setNewApplicant] = useState<NewApplicant>({ username: '', bio: '', skills: [], values: [] })
 	const [tags, setTags] = useState<{skills:[], values:[]}>({
 		skills:[], values:[]
 	})
@@ -84,14 +84,16 @@ const ApplicantForm: React.FC = () => {
 	const getTagData = async () => ({
 		skills: await getAttributes('skills'),
 		values: await getAttributes('values')
-	}) 
+	})
 
-	const makeTags = (tags:Array<{attribute:string, id:number}>, type:string) => {
-		return tags.map((tag, i) =>  (
+	const makeTags = (tags:Array<ApiAttribute>, type:string) => {
+		const attributes = type === 'skills' ? state.skills : state.values
+
+		return tags.map((tag, i) => {			
+			return (
 				<div className="tag-button-box" key={`${type}-container-${i}`}>
 				<button
-					className={`attribute-tag ${state[type as keyof Creator]
-						.includes(tag.id) ? "highlight" : ""}`}
+					className={`attribute-tag ${attributes.includes(tag.id) ? "highlight" : ""}`}
 					name={tag.attribute}
 					id={`${tag.id}`}
 					key={i}
@@ -103,8 +105,9 @@ const ApplicantForm: React.FC = () => {
 				{(i !== 0 && i % Math.ceil(tags.length / 5) === 0) &&
 					<br />}
 				</div>
-		)
-		)}
+			)
+		}
+	)}
 
 	const createNewApplicant = () => {
 		postApplicant(state)
