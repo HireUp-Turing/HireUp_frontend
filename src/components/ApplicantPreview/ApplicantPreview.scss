@@ -1,19 +1,18 @@
 @import '../../_variables.scss';
 
 .ApplicantPreview {
-  border-left: 1px solid $soft-accent;
-  border-bottom: 1px solid $soft-accent;
+  margin: .43em;
   border-radius: 20px; 
   text-decoration: none;
   justify-content: center;
-
+  
   &:hover {    
     .preview-icon {
-    transform: rotate(0deg);
-    animation: roll 3s;
+      transform: rotate(0deg);
+      animation: roll 3s;
     }
   }
-
+  
   @keyframes roll {
     0% {
       transform: rotate(0)
@@ -24,30 +23,54 @@
   }
 }
 
+
+
 .applicant-cards {
+  background-color: $main-bg;
+  max-width: 80em;
+  margin: 0 auto;
   display: flex;
+  min-width: 35em;
+  cursor: pointer;
+  max-width: 80em;
 }
 
 .applicant-info {
   margin-top: 2em;
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
   margin-left: 1em;
   text-align: left;
+  width: 100%;
+  
+  .info-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 20em;
+  }
+}
+
+@media (min-width: 500px) {
+  .applicant-info {
+    flex-direction: column
+  }
 }
 
 .matched-attributes {
+  max-width: 80em;
+  background-color: $main-bg;
   display: flex;
+  margin: 0 auto;
   justify-content: space-around;
-  width: 90%;
   border-top: 1px solid $soft-accent;
+  border-bottom: 1px solid $soft-accent;
+  min-width: 35em;
 }
 
 .preview-icon {
   width: 7em;
   height: min-content;
-  margin: 1em 0 0 2em;
+  margin: 1em 1em 0 2em;
 }
 
 .value-match {
