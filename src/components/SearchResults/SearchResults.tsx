@@ -15,7 +15,7 @@ const SearchResults: React.FC<RouteComponentProps> = (props) => {
     const filterMatches = (data:SearchResponse) => {
       const attributes = [...data.skills, ...data.values]
       const request = [...query.query.skills, ...query.query.values]
-      return attributes.filter(attribute => request.some(tag => tag.attribute === attribute))
+      return attributes.filter(attribute => request.some(tag => tag.attribute === attribute.attribute))
 		}
 
     const queryIds = {
