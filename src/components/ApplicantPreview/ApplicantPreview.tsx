@@ -19,7 +19,7 @@ const ApplicantPreview: React.FC<ApplicantCard> = (props) => {
     skills: findProfileMatches('skills'),
     values: findProfileMatches('values')
   }
-     
+
   return (
     <Link
       to={{
