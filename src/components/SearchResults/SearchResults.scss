@@ -1,7 +1,8 @@
 @import '../../variables';
 
 .search-results {
-	padding-top: 8em;
+	padding-top: 5em;
+	min-height: 100%;
 	overflow: scroll;
 	background-color: $main-bg-two ;
 }
