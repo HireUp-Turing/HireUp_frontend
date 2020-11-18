@@ -27,13 +27,14 @@
 
 	p {
 		display: flex;
-		text-align: left;
+		text-align: justify;
 	}
 }
 
 .cta-buttons {
 	display: flex;
-	flex-direction: column;
+	// flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	
 	a {
