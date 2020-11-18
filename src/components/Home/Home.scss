@@ -7,13 +7,22 @@
 
 .about {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	font-size: 1.4em;
 	text-justify: left;
+	max-width: 30em;
+	margin: 0 auto;
 
 	img {
 		width: 15em;
 		height: 15em;
+	}
+	
+	.hirees {
+		width: 100%;
+		height: auto;
 	}
 
 	p {
