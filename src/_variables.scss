@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Ubuntu:ital,wght@0,300;0,500;1,500&display=swap');
 
 //colors
-$main-bg: #F6F8F2;
+$main-bg: #FFF;
+$main-bg-two: #F6F8F2;
 $text: #333533;
-$accent: #E85D75;
+$accent: #e62f4d;
 $soft-accent: #cdcdcd;
 $highlight: #6369D1;
 
@@ -15,6 +16,7 @@ $highlight: #6369D1;
 	font-size: 1.1em;
 	background: $accent;
 	color: $main-bg;
+	border: solid 1px;
 	padding: .5em;
 	margin: .5em;
 	border-radius: .8em;

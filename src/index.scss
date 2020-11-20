@@ -75,6 +75,21 @@ h6 {
 	border: none;
 }
 
+.cta-button-two { 
+  @include cta-buttons;
+  color: $accent;
+  background-color: $main-bg;
+  border: solid 3px $accent;
+  height: min-content;
+  margin: auto;
+  
+  &:hover {
+    background-color: $accent;
+    color: $main-bg;
+    font-style: italic;
+  }
+}
+
 .accent-text {
 	font-family: 'Krona One', sans-serif;
 }
