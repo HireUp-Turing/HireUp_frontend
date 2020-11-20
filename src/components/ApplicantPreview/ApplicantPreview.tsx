@@ -28,29 +28,31 @@ const ApplicantPreview: React.FC<ApplicantCard> = (props) => {
       }} 
       className="ApplicantPreview"
     >
-        <div className="applicant-cards">
-          <img 
-            className="preview-icon"
-            src={`https://avatars.dicebear.com/api/bottts/${props.username}.svg`} 
-            alt={`${props.username}'s icon`}
-          />
-          <div className="applicant-info">
+      <div className="applicant-cards">
+        <img 
+          className="preview-icon"
+          src={`https://avatars.dicebear.com/api/bottts/${props.username}.svg`} 
+          alt={`${props.username}'s icon`}
+        />
+        <div className="applicant-info">
+          <span className="info-text">
             <h3>{props.username}</h3>
             <p>{bioPreview}{bioPreview.length === 180 && '...'} </p>
-          </div>
+          </span>
         </div>
-        <div className="matched-attributes">
-            <h4> 
-              <span className="accent-text value-match">
-                {attributeMatches.skills.length} / {props.query.query.skills.length}
-              </span> skills match
-            </h4>
-            <h4> 
-              <span className="accent-text value-match">
-                {attributeMatches.values.length} / {props.query.query.values.length}  
-              </span> values match
-            </h4>
-        </div>
+      </div>
+      <div className="matched-attributes">
+        <h4> 
+          <span className="accent-text value-match">
+            {attributeMatches.skills.length} / {props.query.query.skills.length}
+          </span> skills match
+        </h4>
+        <h4> 
+          <span className="accent-text value-match">
+            {attributeMatches.values.length} / {props.query.query.values.length}  
+          </span> values match
+        </h4>
+      </div>
     </Link>
   )
 }

@@ -8,7 +8,7 @@ const Home: React.FC = () => {
 	return (
 		<main className="Home">
 			<section className="about">
-				<img src='../images/clipboard.png' alt="clipboard"/>
+				<img src='../images/people.png' className="hirees" alt="clipboard"/>
 				<p>HireUp aims to minimize bias in the hiring process by turning resumes into true classifieds. By eliminating paperwork and identifying information, we've boiled down the application process to the things you care about most — skills and values.</p>
 			</section>
 			<nav className="cta-buttons">
