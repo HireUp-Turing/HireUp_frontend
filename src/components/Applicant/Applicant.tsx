@@ -12,6 +12,7 @@ const Applicant: React.FC<RouteComponentProps> = (props) => {
   const [messageForm, showMessageForm] = useState<boolean>(false)
 
   const buildApplicant = (info:any) => {
+		console.log(info)
     setApplicant({
       username: info.username,
       bio: info.bio,
@@ -44,15 +45,17 @@ const determineMatchedAttribute = (attribute: string | undefined, keyword: strin
 	}
 
   const makeTags = (attributes:Array<Attribute>, keyword:string) => {
+		console.log(attributes)
     return attributes.map((attribute, i) => {
-    return (
-      <p 
-        className={determineMatchedAttribute(attribute.attribute, keyword, props.location.state)} 
-        key={`${keyword}-${i}`}
-      >
-        {attribute.attribute}
-      </p>
-      )
+			return (
+				<p 
+					className={determineMatchedAttribute(attribute.attribute, keyword, props.location.state)} 
+					key={`${keyword}-${i}`}
+				>
+				{typeof attribute === 'string' && attribute}
+				{attribute.attribute && attribute.attribute}
+				</p>
+				)
     })
   }
 
