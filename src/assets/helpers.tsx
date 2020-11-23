@@ -1,4 +1,4 @@
-import { Attribute, Applicant } from "./definitions";
+import { Attribute, ApplicantInfo } from "./definitions"
 
 type attributeObject = {
   id?: number, 
@@ -12,10 +12,10 @@ type cleanApplicants = {
   bio:string,
   email:string,
 	skills:Array<string | attributeObject>,
-	values:Array<string | attributeObject> 
+	values:Array<string | attributeObject>
 }
 
-type attributes = Array<string | attributeObject>;
+type attributes = Array<string | attributeObject>
 
 export const cleanAttributes = (attributes: attributes) => {
   return attributes.map((attribute:attributeObject | string):Attribute => {
@@ -34,7 +34,7 @@ export const cleanAttributes = (attributes: attributes) => {
   })
 }
 
-export const cleanApplicant = (applicants:cleanApplicants):Applicant => {
+export const cleanApplicant = (applicants:cleanApplicants):ApplicantInfo => {
   return {
     id: applicants.id,
     username: applicants.username,

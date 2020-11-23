@@ -2,11 +2,8 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 import { OpenMenuContext } from '../../contexts/index'
+import { HeaderProps } from '../../assets/definitions'
 import './Header.scss'
-
-interface HeaderProps {
-	auth: number | undefined
-}
 
 const Header: React.FC<HeaderProps> = ({ auth }) => {
 	return (

@@ -1,14 +1,14 @@
-import React, { Attributes, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import  MessageForm from '../MessageForm/MessageForm'
-import { ApplicantProfile, Attribute } from '../../assets/definitions'
+import { ApplicantInfo, Attribute } from '../../assets/definitions'
 import { getApplicantById } from '../../assets/api-calls'
 import { AuthContext, MessageFormContext } from '../../contexts'
 import './Applicant.scss'
 
 const Applicant: React.FC<RouteComponentProps> = (props) => {
-  const [applicant, setApplicant] = useState<ApplicantProfile>({username: '', bio: '', skills: [], values: []})
+  const [applicant, setApplicant] = useState<ApplicantInfo>({username: '', bio: '', skills: [], values: []})
   const [messageForm, showMessageForm] = useState<boolean>(false)
 
   const buildApplicant = (info:any) => {
@@ -45,18 +45,19 @@ const determineMatchedAttribute = (attribute: string | undefined, keyword: strin
 
   const makeTags = (attributes:Array<Attribute>, keyword:string) => {
     return attributes.map((attribute, i) => {
-    return (
-      <p 
-        className={determineMatchedAttribute(attribute.attribute, keyword, props.location.state)} 
-        key={`${keyword}-${i}`}
-      >
-        {attribute.attribute}
-      </p>
-      )
+			return (
+				<p 
+					className={determineMatchedAttribute(attribute.attribute, keyword, props.location.state)} 
+					key={`${keyword}-${i}`}
+				>
+				{typeof attribute === 'string' && attribute}
+				{attribute.attribute && attribute.attribute}
+				</p>
+				)
     })
   }
 
-    const attributeLists = {
+  const attributeLists = {
     skillTags: makeTags(applicant.skills, 'skills'),
     valueTags: makeTags(applicant.values, 'values')
   }
