@@ -7,7 +7,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/HireUp-Turing/HireUp_frontend">
-    <img src="./public/images/hire-up-logo.png" alt="hire up logo" />
+    <img src="./public/images/hireup-logo.png" alt="hire up logo" />
   </a>
   <p align="center">
     <a href="https://hire-up-turing.herokuapp.com/">View Deployed</a>
@@ -80,13 +80,13 @@ This app works with a custom built API. For more information on how to use it lo
 The current version of HireUp is a demo and login features have not yet been implemented. To use the site as an applicant, you must create a new profile.
 
 ### Search for and message users:
- <img src="./public/images/search.gif" alt="search-for-and-message-users" />
+ <img src="./public/images/search-message.gif" alt="Searching for and messaging a new user" />
 
 ### Sign up as an applicant:
- <img src="./public/images/make-profile.gif" alt="search-for-and-message-users" />
+ <img src="./public/images/new-applicant.gif" alt="Creating a new profile" />
 
 ### View your messages as an applicant:
- <img src="./public/images/messages.gif" alt="search-for-and-message-users" />
+ <img src="./public/images/view-messages.gif" alt="search-for-and-message-users" />
 
 <!-- ROADMAP -->
 ## Roadmap
