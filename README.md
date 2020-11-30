@@ -7,7 +7,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/HireUp-Turing/HireUp_frontend">
-    <img src="./public/images/hire-up-logo.png" alt="hire up logo" />
+    <img src="./public/images/hireup-logo.png" alt="hire up logo" />
   </a>
   <p align="center">
     <a href="https://hire-up-turing.herokuapp.com/">View Deployed</a>
